@@ -15,7 +15,8 @@
         "plop:p": "yarn plop page",
         "plop:r": "yarn plop route",
         "plop:m": "yarn plop model",
-        "plop:ty": "yarn plop type"
+        "plop:ty": "yarn plop type",
+        "seed-users": "yarn tsx seed/seed.ts"
     },
     "dependencies": {
         "@julseb-lib/utils": "^0.0.2",
