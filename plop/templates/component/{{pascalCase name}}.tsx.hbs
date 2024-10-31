@@ -1,0 +1,28 @@
+{{#if forward}}
+/*=============================================== {{>pascalName }} component ===============================================*/
+
+import { forwardRef } from "react"
+import { Styled{{>pascalName }} } from "./styles"
+import type { I{{>pascalName }} } from "./types"
+
+export const {{>pascalName }} = forwardRef<HTML{{ pascalCase attribute }}Element, I{{>pascalName }}>(({ {{#if children}}children,{{/if}}{{#if as}} as,{{/if}} }, ref) => {
+    return (
+        <Styled{{>pascalName }} ref={ref}{{#if as}} as={as}{{/if}}>
+            {{#if children}}{children}{{/if}}
+        </Styled{{>pascalName }}>
+    )
+})
+{{else}}
+/*=============================================== {{>pascalName }} component ===============================================*/
+
+import { Styled{{>pascalName }} } from "./styles"
+import type { I{{>pascalName }} } from "./types"
+
+export const {{>pascalName }}: FC<I{{>pascalName }}> = ({ {{#if children}}children,{{/if}}{{#if as}} as,{{/if}} }) => {
+    return (
+        <Styled{{>pascalName }}{{#if as}} as={as}{{/if}}>
+            {{#if children}}{children}{{/if}}
+        </Styled{{>pascalName }}>
+    )
+}
+{{/if}}
