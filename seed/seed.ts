@@ -1,19 +1,18 @@
 /*=============================================== Seed fake users ===============================================*/
 
-require("dotenv/config")
-const mongoose = require("mongoose")
-const bcrypt = require("bcryptjs")
-const { faker } = require("@faker-js/faker")
-const {
+import "dotenv/config"
+import mongoose from "mongoose"
+import bcrypt from "bcryptjs"
+import { faker } from "@faker-js/faker"
+import {
     getRandomString,
     getRandomAvatar,
     convertToEmail,
     generateNumbers,
     getRandom,
-} = require("@julseb-lib/utils")
-
-// Convert TS model to JS model and add it to "./models"
-const { UserModel } = require("./models/User.model")
+} from "@julseb-lib/utils"
+import { UserModel } from "../server/models/User.model"
+import type { User } from "../shared/types"
 
 // Hash password
 const password = "Password42"
@@ -24,7 +23,7 @@ const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/react-rest"
 
 mongoose.connect(MONGODB_URI)
 
-const realUser = {
+const realUser: Partial<User> = {
     fullName: "Julien Sebag",
     email: "julien.sebag@me.com",
     password: hash,
@@ -33,9 +32,9 @@ const realUser = {
     role: "admin",
 }
 
-const fakeUsers = generateNumbers(0, 98).map(() => {
+const fakeUsers: Array<Partial<User>> = generateNumbers(0, 98).map(() => {
     const gender = getRandom(["male", "female"])
-    const fullName = faker.person.fullName(gender)
+    const fullName = faker.person.fullName(gender as any)
 
     return {
         fullName,
@@ -43,7 +42,7 @@ const fakeUsers = generateNumbers(0, 98).map(() => {
         password: hash,
         verified: true,
         verifyToken: getRandomString(20),
-        avatar: getRandomAvatar(gender),
+        avatar: getRandomAvatar(gender as any),
         role: "user",
     }
 })
@@ -59,4 +58,4 @@ UserModel.insertMany([realUser, ...fakeUsers])
     })
     .catch(err => console.log(err))
 
-// Run `node db/seed.js`
+// Run `yarn tsx seed/seed.ts` from root folder
