@@ -22,6 +22,7 @@ Run `yarn dev` at the root of the project. Once again, thanks to Concurrently, b
 -   [Mongoose](https://mongoosejs.com/)
 -   [Nodemailer](https://nodemailer.com/)
 -   [Plop](https://plopjs.com/)
+-   [tsx](https://www.npmjs.com/package/tsx)
 
 ### Frontend
 
@@ -52,7 +53,7 @@ All the models can be found in `models` folder. You can create a boilerplate one
 
 ### Create data
 
-Find an example for adding bulk data inside a database in `server/db/seed/seed.js`.
+You can add some fake users by running `yarn seed-users`.
 
 ## Frontend
 
