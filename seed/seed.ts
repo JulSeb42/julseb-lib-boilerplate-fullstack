@@ -19,7 +19,9 @@ const password = "Password42"
 const salt = bcrypt.genSaltSync()
 const hash = bcrypt.hashSync(password, salt)
 
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/react-rest"
+const MONGODB_URI =
+    process.env.MONGODB_URI ||
+    "mongodb://localhost/julseb-lib-boilerplate-fullstack"
 
 mongoose.connect(MONGODB_URI)
 
