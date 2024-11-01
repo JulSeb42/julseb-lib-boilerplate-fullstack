@@ -10,7 +10,6 @@ export const Homepage = () => {
     return (
         <Page title="Home">
             <Text tag="h1">Hello World!</Text>
-            <Text>Newest repo</Text>
 
             {isLoggedIn && (
                 <Text>Hello {user?.fullName}, you are logged in!</Text>
