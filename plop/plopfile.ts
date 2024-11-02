@@ -1,6 +1,8 @@
 /*=============================================== Plopfile ===============================================*/
 
 import type { NodePlopAPI } from "plop"
+import chalk from "chalk"
+import figlet from "figlet"
 import { runCommand } from "./actions/index.js"
 import {
     generateComponent,
@@ -21,6 +23,12 @@ import { pascalName } from "./partials/index.js"
 // Generate components, etc.
 
 export default (plop: NodePlopAPI) => {
+    console.log(
+        chalk.blueBright(
+            figlet.textSync("JulSeb CLI", { horizontalLayout: "full" })
+        )
+    )
+
     /*====================== Actions ======================*/
 
     runCommand(plop) // With this helper you can run commands in a terminal => { type: "runCommand", command: "console.log("hello world")" }
