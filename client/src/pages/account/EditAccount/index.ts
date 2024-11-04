@@ -1,3 +1,3 @@
 /*=============================================== Exports ===============================================*/
 
-export * from "pages/account/EditAccount/EditAccount"
+export * from "./EditAccount"

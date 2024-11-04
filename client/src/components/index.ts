@@ -1,13 +1,13 @@
 /*=============================================== Export all components ===============================================*/
 
-export * from "components/layouts/Page"
-export * from "components/DangerZone"
-export * from "components/ImageUploader"
-export * from "components/ErrorMessage"
-export * from "components/user/UserAvatar"
-export * from "components/user/UserHeader"
-export * from "components/user/UserCard"
-export * from "components/user/UserCardSkeleton"
-export * from "components/admin/AdminPage"
-export * from "components/admin/AdminUserCard"
+export * from "./layouts/Page"
+export * from "./DangerZone"
+export * from "./ImageUploader"
+export * from "./ErrorMessage"
+export * from "./user/UserAvatar"
+export * from "./user/UserHeader"
+export * from "./user/UserCard"
+export * from "./user/UserCardSkeleton"
+export * from "./admin/AdminPage"
+export * from "./admin/AdminUserCard"
 /* prepend - do not remove */

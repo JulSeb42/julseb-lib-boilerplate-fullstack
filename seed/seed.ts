@@ -61,3 +61,4 @@ UserModel.insertMany([realUser, ...fakeUsers])
     .catch(err => console.log(err))
 
 // Run `yarn tsx seed/seed.ts` from root folder
+// or `yarn seed-users`

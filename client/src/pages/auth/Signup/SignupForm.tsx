@@ -3,12 +3,12 @@
 import { useState, type ChangeEvent, type FormEvent } from "react"
 import { useNavigate } from "react-router-dom"
 import { Form, Input, passwordRegex, InputCheck } from "@julseb-lib/react"
-import type { LibValidationStatus } from "@julseb-lib/react/types"
 import { useAuthContext } from "context"
 import { authService } from "api"
 import { ErrorMessage } from "components"
 import { PATHS } from "routes"
 import { COMMON_TEXTS } from "shared"
+import type { LibValidationStatus } from "@julseb-lib/react/types"
 import type { IErrorMessage as ErrorMessageType } from "types"
 
 const STORAGE_ITEM_NAME = "userEmail"

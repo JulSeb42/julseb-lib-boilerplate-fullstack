@@ -10,11 +10,11 @@ import {
     Skeleton,
     Flexbox,
 } from "@julseb-lib/react"
-import type { LibValidationStatus } from "@julseb-lib/react/types"
 import { authService, userService } from "api"
 import { ErrorMessage } from "components"
 import { COMMON_TEXTS } from "shared"
 import { PATHS } from "routes"
+import type { LibValidationStatus } from "@julseb-lib/react/types"
 import type { User } from "types"
 
 export const ResetPasswordForm = () => {

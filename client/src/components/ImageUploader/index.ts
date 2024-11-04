@@ -1,3 +1,3 @@
 /*=============================================== ImageUploader exports ===============================================*/
 
-export * from "components/ImageUploader/ImageUploader"
+export * from "./ImageUploader"

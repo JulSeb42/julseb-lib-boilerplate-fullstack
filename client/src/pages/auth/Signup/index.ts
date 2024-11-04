@@ -1,3 +1,3 @@
 /*=============================================== Signup exports ===============================================*/
 
-export * from "pages/auth/Signup/Signup"
+export * from "./Signup"

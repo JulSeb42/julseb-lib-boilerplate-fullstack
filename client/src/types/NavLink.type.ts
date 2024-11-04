@@ -1,7 +1,7 @@
 /*=============================================== Nav link types ===============================================*/
 
 import type { LibButtonLinkBlankRequired } from "@julseb-lib/react/types"
-import type { UserRole } from "types"
+import type { UserRole } from "./"
 
 export type INavLink = LibButtonLinkBlankRequired & {
     text: string

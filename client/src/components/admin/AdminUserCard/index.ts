@@ -1,3 +1,3 @@
 /*=============================================== AdminUserCard exports ===============================================*/
 
-export * from "components/admin/AdminUserCard/AdminUserCard"
+export * from "./AdminUserCard"

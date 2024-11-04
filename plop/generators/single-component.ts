@@ -1,7 +1,7 @@
 /*=============================================== Generate single file component ===============================================*/
 
-import type { NodePlopAPI } from "plop"
 import { BASE_CLIENT_PATH, TEMPLATES_PATH } from "../utils/index.js"
+import type { NodePlopAPI } from "plop"
 
 export default (plop: NodePlopAPI) => {
     const { setGenerator } = plop

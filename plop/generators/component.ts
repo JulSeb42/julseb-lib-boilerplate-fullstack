@@ -1,7 +1,7 @@
 /*=============================================== Generate component ===============================================*/
 
-import type { NodePlopAPI } from "plop"
 import { BASE_CLIENT_PATH, TEMPLATES_PATH } from "../utils/index.js"
+import type { NodePlopAPI } from "plop"
 
 export default (plop: NodePlopAPI) => {
     const { setGenerator } = plop
@@ -69,7 +69,7 @@ export default (plop: NodePlopAPI) => {
                     // @ts-ignore
                     path: `${BASE_CLIENT_PATH}/components/index.ts`,
                     template:
-                        'export * from "components/{{ pascalCase name }}"\n$1',
+                        'export * from "./{{ pascalCase name }}"\n$1',
                     pattern: /(\/\* prepend - do not remove \*\/)/g,
                     verbose: false,
                 })

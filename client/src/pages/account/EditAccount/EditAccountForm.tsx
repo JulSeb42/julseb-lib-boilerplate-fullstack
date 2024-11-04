@@ -1,5 +1,7 @@
 /*=============================================== EditAccountForm ===============================================*/
 
+import { useState, type ChangeEvent, type FormEvent } from "react"
+import { useNavigate } from "react-router-dom" 
 import {
     Button,
     Form,
@@ -12,8 +14,6 @@ import {
 import { userService } from "api"
 import { ErrorMessage, ImageUploader } from "components"
 import { useAuthContext } from "context"
-import { useState, type ChangeEvent, type FormEvent } from "react"
-import { useNavigate } from "react-router-dom"
 import { PATHS } from "routes"
 import type { IErrorMessage } from "types"
 

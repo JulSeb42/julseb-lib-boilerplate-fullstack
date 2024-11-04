@@ -8,8 +8,8 @@ import {
     SkeletonShine,
     getFirstName,
 } from "@julseb-lib/react"
-import { UserAvatar } from "../.."
-import type { IUserHeader } from "components/user/UserHeader/types"
+import { UserAvatar } from "components"
+import type { IUserHeader } from "./types"
 
 export const UserHeader: FC<IUserHeader> = ({
     user,

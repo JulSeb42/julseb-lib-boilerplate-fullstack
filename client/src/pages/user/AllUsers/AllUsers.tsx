@@ -2,7 +2,7 @@
 
 import { Text } from "@julseb-lib/react"
 import { Page } from "components"
-import { UsersList } from "pages/user/AllUsers/UsersList"
+import { UsersList } from "./UsersList"
 
 export const AllUsers = () => {
     return (

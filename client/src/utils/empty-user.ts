@@ -11,4 +11,5 @@ export const emptyUser: User = {
     verifyToken: "",
     resetToken: "",
     avatar: "",
+    role: "user",
 }

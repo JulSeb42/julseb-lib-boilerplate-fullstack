@@ -1,7 +1,7 @@
 /*=============================================== Run command action ===============================================*/
 
-import type { NodePlopAPI } from "plop"
 import { exec } from "child_process"
+import type { NodePlopAPI } from "plop"
 
 export default (plop: NodePlopAPI) => {
     const { setActionType } = plop

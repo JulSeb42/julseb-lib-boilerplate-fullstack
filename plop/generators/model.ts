@@ -1,11 +1,11 @@
 /*=============================================== Generate model & type ===============================================*/
 
-import type { NodePlopAPI } from "plop"
 import {
     BASE_SERVER_PATH,
     BASE_SHARED_PATH,
     TEMPLATES_PATH,
 } from "../utils/index.js"
+import type { NodePlopAPI } from "plop"
 
 export default (plop: NodePlopAPI) => {
     const { setGenerator } = plop

@@ -15,11 +15,12 @@ export const PATHS = {
     RESET_PASSWORD: "/reset-password/:token/:id",
     GOODBYE: "/goodbye",
 
+    ADMIN_HOME: "/admin",
+    ADMIN_USERS: "/admin/users",
+
     MY_ACCOUNT: "/my-account",
     EDIT_ACCOUNT: "/my-account/edit",
     EDIT_PASSWORD: "/my-account/edit-password",
 
-    ADMIN_HOME: "/admin",
-	ADMIN_USERS: "/admin/users",
-	/* prepend path - do not remove */
+    /* prepend path - do not remove */
 }

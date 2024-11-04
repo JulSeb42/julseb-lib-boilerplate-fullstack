@@ -15,7 +15,7 @@ const storage = new CloudinaryStorage({
     cloudinary,
     params: {
         // @ts-expect-error
-        allowed_formats: ["jpg", "png"],
+        allowed_formats: ["jpg", "png", "svg"],
         folder: "julseb-lib-boilerplate-fullstack",
     },
 })

@@ -9,7 +9,7 @@ import {
     NotLoggedIn,
     VerificationFailed,
     VerificationSuccess,
-} from "pages/auth/Verify/sections"
+} from "./sections"
 import type { IErrorMessage } from "types"
 
 export const Verify = () => {

@@ -3,9 +3,9 @@
 import { Text } from "@julseb-lib/react"
 import { Link } from "react-router-dom"
 import { Page } from "components"
-import { LoginForm } from "pages/auth/Login/LoginForm"
-import { DemoLogin } from "pages/auth/Login/DemoLogin"
 import { PATHS } from "routes"
+import { LoginForm } from "./LoginForm"
+import { DemoLogin } from "./DemoLogin"
 
 export const Login = () => {
     return (

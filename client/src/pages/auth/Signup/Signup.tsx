@@ -3,8 +3,8 @@
 import { Link } from "react-router-dom"
 import { Text } from "@julseb-lib/react"
 import { Page } from "components"
-import { SignupForm } from "pages/auth/Signup/SignupForm"
 import { PATHS } from "routes"
+import { SignupForm } from "./SignupForm"
 
 export const Signup = () => {
     return (

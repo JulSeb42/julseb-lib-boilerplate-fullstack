@@ -1,6 +1,5 @@
 /*=============================================== UsersList ===============================================*/
 
-import type { AxiosResponse } from "axios"
 import styled from "styled-components"
 import {
     useFetch,
@@ -13,6 +12,7 @@ import {
 } from "@julseb-lib/react"
 import { userService } from "api"
 import { UserCard, UserCardSkeleton } from "components"
+import type { AxiosResponse } from "axios"
 import type { User } from "types"
 
 export const UsersList = () => {
@@ -21,7 +21,10 @@ export const UsersList = () => {
     )
     const users: Array<User> | null = response?.data
 
-    const { paginatedData, totalPages } = usePaginatedData<User>(users ?? [], 15)
+    const { paginatedData, totalPages } = usePaginatedData<User>(
+        users ?? [],
+        15
+    )
 
     if (loading || (!response && !error)) return <UsersListSkeleton />
 

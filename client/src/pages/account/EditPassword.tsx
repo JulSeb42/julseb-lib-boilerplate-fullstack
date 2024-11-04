@@ -3,13 +3,13 @@
 import { useState, type ChangeEvent, type FormEvent } from "react"
 import { useNavigate } from "react-router-dom"
 import { Text, Form, Input, passwordRegex } from "@julseb-lib/react"
-import type { LibValidationStatus } from "@julseb-lib/react/types"
 import { useAuthContext } from "context"
 import { userService } from "api"
 import { Page, ErrorMessage } from "components"
 import { PATHS } from "routes"
 import { COMMON_TEXTS } from "shared"
 import type { IErrorMessage as ErrorMessageType } from "types"
+import type { LibValidationStatus } from "@julseb-lib/react/types"
 
 export const EditPassword = () => {
     const { user, setUser, setToken } = useAuthContext()

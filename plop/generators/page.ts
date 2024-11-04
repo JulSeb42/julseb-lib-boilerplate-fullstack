@@ -1,12 +1,12 @@
 /*=============================================== Generate page ===============================================*/
 
-import type { NodePlopAPI, ActionType } from "plop"
 import { toKebabCase, toTitleCase } from "@julseb-lib/utils"
 import {
     generatePageRoute,
     BASE_CLIENT_PATH,
     TEMPLATES_PATH,
 } from "../utils/index.js"
+import type { NodePlopAPI, ActionType } from "plop"
 
 export default (plop: NodePlopAPI) => {
     const { setGenerator } = plop

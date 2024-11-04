@@ -3,8 +3,8 @@
 import { Text } from "@julseb-lib/react"
 import { UserAvatar } from "components"
 import { PATHS } from "routes"
-import { StyledUserCard } from "components/user/UserCard/styles"
-import type { IUserCard } from "components/user/UserCard/types"
+import { StyledUserCard } from "./styles"
+import type { IUserCard } from "./types"
 
 export const UserCard: FC<IUserCard> = ({ user }) => {
     return (

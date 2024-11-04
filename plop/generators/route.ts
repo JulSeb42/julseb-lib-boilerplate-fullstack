@@ -1,12 +1,12 @@
 /*=============================================== Generate route ===============================================*/
 
-import type { NodePlopAPI } from "plop"
 import {
     BASE_SERVER_PATH,
     BASE_CLIENT_PATH,
     BASE_SHARED_PATH,
     TEMPLATES_PATH,
 } from "../utils/index.js"
+import type { NodePlopAPI } from "plop"
 
 export default (plop: NodePlopAPI) => {
     const { setGenerator } = plop
@@ -50,7 +50,7 @@ export default (plop: NodePlopAPI) => {
                 templateFile: `${TEMPLATES_PATH}/types/interface.hbs`,
             },
             "Exporting your new interface",
-            {
+            { 
                 type: "modify",
                 path: `${BASE_SHARED_PATH}/types/index.ts`,
                 template: `export * from "./{{ pascalCase name }}.interface"\n$1`,
@@ -95,7 +95,7 @@ export default (plop: NodePlopAPI) => {
                 type: "modify",
                 path: `${BASE_CLIENT_PATH}/api/index.ts`,
                 template:
-                    'export * from "api/{{ kebabCase name }}.service"\n$1',
+                    'export * from "./{{ kebabCase name }}.service"\n$1',
                 pattern: /(\/\* prepend - do not remove \*\/)/g,
             },
         ],

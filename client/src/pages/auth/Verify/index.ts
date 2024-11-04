@@ -1,3 +1,3 @@
 /*=============================================== Verify exports ===============================================*/
 
-export * from "pages/auth/Verify/Verify"
+export * from "./Verify"

@@ -1,3 +1,3 @@
 /*=============================================== Exports ===============================================*/
 
-export * from "context/auth/auth.context"
+export * from "./auth.context"
