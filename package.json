@@ -22,7 +22,7 @@
         "@julseb-lib/utils": "^0.0.2",
         "bcryptjs": "^2.4.3",
         "cloudinary": "^2.5.1",
-        "concurrently": "^9.0.1",
+        "concurrently": "^9.1.0",
         "cookie-parser": "^1.4.7",
         "cors": "^2.8.5",
         "dotenv": "^16.4.5",
@@ -36,7 +36,7 @@
         "nodemailer": "^6.9.16"
     },
     "devDependencies": {
-        "@faker-js/faker": "^9.1.0",
+        "@faker-js/faker": "^9.2.0",
         "@types/bcryptjs": "^2.4.6",
         "@types/cookie-parser": "^1.4.7",
         "@types/cors": "^2.8.17",
