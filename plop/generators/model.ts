@@ -16,22 +16,26 @@ export default (plop: NodePlopAPI) => {
             { type: "input", name: "name", message: "Enter model's name" },
         ],
         actions: [
+            "Creating your new model",
             {
                 type: "add",
                 path: `${BASE_SERVER_PATH}/models/{{ pascalCase name }}.model.ts`,
                 templateFile: `${TEMPLATES_PATH}/model.hbs`,
             },
+            "Exporting your new file from the model's index.ts",
             {
                 type: "modify",
                 path: `${BASE_SERVER_PATH}/models/index.ts`,
                 template: 'export * from "./{{ pascalCase name }}.model"\n$1',
                 pattern: /(\/\* prepend - do not remove \*\/)/g,
             },
+            "Creating a type for your new model",
             {
                 type: "add",
                 path: `${BASE_SHARED_PATH}/types/{{ pascalCase name }}.type.ts`,
                 templateFile: `${TEMPLATES_PATH}/types/type.hbs`,
             },
+            "Exporting your new type from types index.ts",
             {
                 type: "modify",
                 path: `${BASE_SHARED_PATH}/types/index.ts`,
