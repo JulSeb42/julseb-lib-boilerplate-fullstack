@@ -33,7 +33,7 @@ export default (plop: NodePlopAPI) => {
                 path: `${BASE_SERVER_PATH}/routes/index.ts`,
                 template:
                     'import {{ camelCase name }} from "./{{ kebabCase name }}"\n$1',
-                pattern: /(\/\* prepend import - do not remove \*\/)/g,
+                pattern: /(\/\* Prepend import - DO NOT REMOVE \*\/)/g,
             },
             "Adding your new route to the router",
             {
@@ -41,7 +41,7 @@ export default (plop: NodePlopAPI) => {
                 path: `${BASE_SERVER_PATH}/routes/index.ts`,
                 template:
                     "router.use(SERVER_PATHS.{{ constantCase name }}.ROOT, {{ camelCase name }})\n$1",
-                pattern: /(\/\* prepend router - do not remove \*\/)/g,
+                pattern: /(\/\* Prepend router - DO NOT REMOVE \*\/)/g,
             },
             "Creating a new interface in shared types",
             {
@@ -50,11 +50,11 @@ export default (plop: NodePlopAPI) => {
                 templateFile: `${TEMPLATES_PATH}/types/interface.hbs`,
             },
             "Exporting your new interface",
-            { 
+            {
                 type: "modify",
                 path: `${BASE_SHARED_PATH}/types/index.ts`,
                 template: `export * from "./{{ pascalCase name }}.interface"\n$1`,
-                pattern: /(\/\* prepend - do not remove \*\/)/g,
+                pattern: /(\/\* Prepend - DO NOT REMOVE \*\/)/g,
             },
             "Creating a new model",
             {
@@ -67,14 +67,14 @@ export default (plop: NodePlopAPI) => {
                 type: "modify",
                 path: `${BASE_SERVER_PATH}/models/index.ts`,
                 template: 'export * from "./{{ pascalCase name }}.model"\n$1',
-                pattern: /(\/\* prepend - do not remove \*\/)/g,
+                pattern: /(\/\* Prepend - DO NOT REMOVE \*\/)/g,
             },
             "Creating new server path",
             {
                 type: "modify",
                 path: `${BASE_SHARED_PATH}/server-paths.ts`,
                 template: `{{ constantCase name }}: "/{{ kebabCase name }}",\n\t$1`,
-                pattern: /(\/\* prepend path root - do not remove \*\/)/g,
+                pattern: /(\/\* Prepend path root - DO NOT REMOVE \*\/)/g,
             },
             "Creating basic API calls",
             {
@@ -82,7 +82,7 @@ export default (plop: NodePlopAPI) => {
                 path: `${BASE_SHARED_PATH}/server-paths.ts`,
                 template:
                     '{{ constantCase name }}: {\n\t\tROOT: SERVER_PATH_ROOTS.{{ constantCase name }},\n\t\tALL_{{ constantCase name }}S: "/all-{{ kebabCase name }}",\n\t\tGET_{{ constantCase name }}: (id = ":id") => `/{{ kebabCase name }}/${id}`,\n\t},\n\t$1',
-                pattern: /(\/\* prepend server path - do not remove \*\/)/g,
+                pattern: /(\/\* Prepend server path - DO NOT REMOVE \*\/)/g,
             },
             "Creating a new client service",
             {
@@ -94,9 +94,8 @@ export default (plop: NodePlopAPI) => {
             {
                 type: "modify",
                 path: `${BASE_CLIENT_PATH}/api/index.ts`,
-                template:
-                    'export * from "./{{ kebabCase name }}.service"\n$1',
-                pattern: /(\/\* prepend - do not remove \*\/)/g,
+                template: 'export * from "./{{ kebabCase name }}.service"\n$1',
+                pattern: /(\/\* Prepend - DO NOT REMOVE \*\/)/g,
             },
         ],
     })

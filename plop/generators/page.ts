@@ -89,7 +89,7 @@ export default (plop: NodePlopAPI) => {
                     template: data?.admin
                         ? 'import { {{ pascalCase name }} } from "pages/admin/{{ pascalCase name }}"\n$1'
                         : 'import { {{ pascalCase name }} } from "pages/{{ pascalCase name }}"\n$1',
-                    pattern: /(\/\* prepend import - do not remove \*\/)/g,
+                    pattern: /(\/\* Prepend import - DO NOT REMOVE \*\/)/g,
                 },
                 "Adding your new page to the paths array",
                 {
@@ -98,7 +98,7 @@ export default (plop: NodePlopAPI) => {
                     template: data?.admin
                         ? generatePageRoute(data?.protected, true)
                         : generatePageRoute(data?.protected),
-                    pattern: /(\/\* prepend route - do not remove \*\/)/g,
+                    pattern: /(\/\* Prepend route - DO NOT REMOVE \*\/)/g,
                 },
                 "Adding path to paths list",
                 {
@@ -107,7 +107,7 @@ export default (plop: NodePlopAPI) => {
                     template: data?.admin
                         ? 'ADMIN_{{ constantCase name }}: "/{{ pathCase path }}",\n\t$1'
                         : '{{ constantCase name }}: "/{{ pathCase path }}",\n\t$1',
-                    pattern: /(\/\* prepend path - do not remove \*\/)/g,
+                    pattern: /(\/\* Prepend path - DO NOT REMOVE \*\/)/g,
                 }
             )
 

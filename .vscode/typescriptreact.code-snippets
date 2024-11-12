@@ -34,5 +34,9 @@
     "Comment small": {
         "prefix": "comment-small",
         "body": "/*====================== $1 ======================*/"
+    },
+    "Prepend": {
+        "prefix": "prepend",
+        "body": "/* Prepend $1 - DO NOT REMOVE */"
     }
 }

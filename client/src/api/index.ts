@@ -4,4 +4,4 @@ export * from "api/http-common"
 export * from "api/auth.service"
 export * from "api/user.service"
 export * from "api/cloudinary.service"
-/* prepend - do not remove */
+/* Prepend - DO NOT REMOVE */

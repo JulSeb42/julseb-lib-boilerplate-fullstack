@@ -50,7 +50,7 @@ export default (plop: NodePlopAPI) => {
                     // @ts-ignore
                     template:
                         'export * from "components/{{ pascalCase name }}"\n$1',
-                    pattern: /(\/\* prepend - do not remove \*\/)/g,
+                    pattern: /(\/\* Prepend - DO NOT REMOVE \*\/)/g,
                 })
 
             return actions

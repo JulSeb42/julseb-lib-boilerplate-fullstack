@@ -10,4 +10,4 @@ export * from "./user/UserCard"
 export * from "./user/UserCardSkeleton"
 export * from "./admin/AdminPage"
 export * from "./admin/AdminUserCard"
-/* prepend - do not remove */
+/* Prepend - DO NOT REMOVE */

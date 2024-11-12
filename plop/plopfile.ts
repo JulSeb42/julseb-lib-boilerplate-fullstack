@@ -11,6 +11,8 @@ import {
     generateRoute,
     generateSingleComponent,
     generateType,
+    generateGenerator,
+    /* Prepend import - DO NOT REMOVE */
 } from "./generators/index.js"
 import {
     addOpenBrackets,
@@ -18,7 +20,7 @@ import {
     generatePageRoute,
     surroundBrackets,
 } from "./utils/index.js"
-import { pascalName } from "./partials/index.js"
+import { pascalName, kebabName } from "./partials/index.js"
 
 // Generate components, etc.
 
@@ -33,6 +35,11 @@ export default (plop: NodePlopAPI) => {
 
     runCommand(plop) // With this helper you can run commands in a terminal => { type: "runCommand", command: "console.log("hello world")" }
 
+    /*====================== Partials ======================*/
+
+    pascalName(plop) // Shortcut for {{ pascalCase name }}, use: {{>pascalName }}
+    kebabName(plop) // Shortcut for {{ kebabCase name }}, use: {{>kebabName }}
+
     /*====================== Utils ======================*/
 
     generatePageRoute("undefined", null) // Generate a client route as anon, protected or none of those
@@ -40,19 +47,20 @@ export default (plop: NodePlopAPI) => {
     addOpenBrackets(plop) // Add double open brackets {{ where needed
     addClosingBrackets(plop) // Add double closing brackets }} where needed
 
-    /*====================== Partials ======================*/
-
-    pascalName(plop) // Shortcut for {{ pascalCase name }}, use: {{>pascalName }}
-
     /*====================== Client ======================*/
 
     generateComponent(plop) // yarn plop:c
     generateSingleComponent(plop) // yarn plop:sc
     generatePage(plop) // yarn plop:p
     generateType(plop) // yarn plop:ty
+    /* Prepend function - DO NOT REMOVE */
 
     /*====================== Server ======================*/
 
     generateRoute(plop) // yarn plop:r
     generateModel(plop) // yarn plop:m
+
+    /*====================== Plop ======================*/
+
+    generateGenerator(plop)
 }

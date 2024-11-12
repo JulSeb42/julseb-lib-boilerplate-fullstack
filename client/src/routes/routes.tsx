@@ -18,7 +18,7 @@ import {
 import { MyAccount, EditAccount, EditPassword } from "pages/account"
 import { Admin } from "pages/admin/Admin"
 import { Users } from "pages/admin/Users/Users"
-/* prepend import - do not remove */
+/* Prepend import - DO NOT REMOVE */
 
 type Route = {
     path: string
@@ -131,7 +131,7 @@ export const routes: Array<Route> = [
             </ProtectedRoute>
         ),
     },
-    /* prepend route - do not remove */
+    /* Prepend route - DO NOT REMOVE */
 
     ...redirects,
 ]
