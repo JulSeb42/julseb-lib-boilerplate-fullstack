@@ -49,7 +49,12 @@ export const UserModalReset: FC<IUserModalReset> = ({
 
                 <Flexbox gap="xs">
                     <Button onClick={handleReset}>Yes, send email</Button>
-                    <Button variant="transparent">No, cancel</Button>
+                    <Button
+                        variant="transparent"
+                        onClick={() => setIsOpen(false)}
+                    >
+                        No, cancel
+                    </Button>
                 </Flexbox>
             </Alert>
         </Modal>
