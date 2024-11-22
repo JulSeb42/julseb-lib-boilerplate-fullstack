@@ -35,8 +35,15 @@ const realUser: Partial<User> = {
 }
 
 const fakeUsers: Array<Partial<User>> = generateNumbers(0, 98).map(() => {
-    const gender = getRandom(["male", "female"])
-    const fullName = faker.person.fullName(gender as any)
+    const genders = getRandom(["male", "female"])
+    const fullName = faker.person
+        .fullName(genders as any)
+        .replaceAll("PhD", "")
+        .replaceAll("DVM", "")
+        .replaceAll("DDS", "")
+        .replaceAll("Mr. ", "")
+        .replaceAll("MD", "")
+        .replaceAll("Jr.", "")
 
     return {
         fullName,
@@ -44,7 +51,7 @@ const fakeUsers: Array<Partial<User>> = generateNumbers(0, 98).map(() => {
         password: hash,
         verified: true,
         verifyToken: getRandomString(20),
-        avatar: getRandomAvatar(gender as any),
+        avatar: getRandomAvatar(genders as any),
         role: "user",
     }
 })
