@@ -1,7 +1,7 @@
 /*=============================================== EditAccountForm ===============================================*/
 
-import { useState, type ChangeEvent, type FormEvent } from "react"
-import { useNavigate } from "react-router-dom" 
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import {
     Button,
     Form,
@@ -33,7 +33,7 @@ export const EditAccountForm = () => {
     const handleInputs = (e: ChangeEvent<HTMLInputElement>) =>
         setInputs({ ...inputs, [e.target.id]: e.target.value })
 
-    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    const handleSubmit = (e: FormEvent) => {
         e.preventDefault()
 
         userService

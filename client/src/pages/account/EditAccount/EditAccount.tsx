@@ -9,7 +9,7 @@ import { DeleteAccount } from "./DeleteAccount"
 
 export const EditAccount = () => {
     return (
-        <Page title="Edit your account" mainWidth="form">
+        <Page title="Edit your account" mainSize="form">
             <Text tag="h1">Edit your account</Text>
 
             <EditAccountForm />

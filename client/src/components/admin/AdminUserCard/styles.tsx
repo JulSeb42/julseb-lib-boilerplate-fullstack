@@ -41,10 +41,6 @@ export const StyledAdminUserCard = styled.div`
     border-radius: ${RADIUSES.M};
     overflow: hidden;
     position: relative;
-
-    &:hover ${StyledAvatar}, &:hover ${AvatarContainer} {
-        transform: scale(1.05);
-    }
 `
 
 export const UserName = styled(Text)`

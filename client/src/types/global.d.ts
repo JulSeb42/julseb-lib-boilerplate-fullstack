@@ -1,6 +1,11 @@
 /*=============================================== Global types ===============================================*/
 
-import type { FunctionComponent, ElementType as ElType } from "react"
+import type {
+    FunctionComponent,
+    ElementType as ElType,
+    ChangeEvent as Change,
+    FormEvent as Form,
+} from "react"
 import "styled-components"
 import type {
     ReactChildren,
@@ -13,6 +18,8 @@ declare global {
     type DispatchState<T> = DispatchType<T>
     type FC<T = FunctionComponent> = FunctionComponent<T>
     type ElementType = ElType
+    type ChangeEvent<T> = Change<T>
+    type FormEvent = Form<HTMLFormElement>
 }
 
 declare module "styled-components" {

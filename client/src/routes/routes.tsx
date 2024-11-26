@@ -17,7 +17,7 @@ import {
 } from "pages/auth"
 import { MyAccount, EditAccount, EditPassword } from "pages/account"
 import { Admin } from "pages/admin/Admin"
-import { Users } from "pages/admin/Users/Users"
+import { Users } from "pages/admin/Users/AdminUsers"
 /* Prepend import - DO NOT REMOVE */
 
 type Route = {

@@ -1,6 +1,6 @@
 /*=============================================== EditPassword ===============================================*/
 
-import { useState, type ChangeEvent, type FormEvent } from "react"
+import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { Text, Form, Input, passwordRegex } from "@julseb-lib/react"
 import { useAuthContext } from "context"
@@ -45,7 +45,7 @@ export const EditPassword = () => {
         })
     }
 
-    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    const handleSubmit = (e: FormEvent) => {
         e.preventDefault()
 
         if (!passwords.oldPassword || !passwords.newPassword) {
@@ -67,7 +67,7 @@ export const EditPassword = () => {
     }
 
     return (
-        <Page title="Edit password" mainWidth="form">
+        <Page title="Edit password" mainSize="form">
             <Text tag="h1">Edit your password</Text>
 
             <Form

@@ -32,5 +32,6 @@ export const COMMON_TEXTS = {
             "The verify token does not match with the one from your account.",
         ID_NOT_VALID: "Your ID is not valid.",
         OLD_PASSWORD_WRONG: "The old password is wrong.",
+        SEARCH_RESULTS_EMPTY: "Your search did not return any result.",
     },
 }

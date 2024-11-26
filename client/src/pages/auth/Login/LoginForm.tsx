@@ -1,6 +1,6 @@
 /*=============================================== LoginForm ===============================================*/
 
-import { useState, type ChangeEvent, type FormEvent } from "react"
+import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { Form, Input, InputCheck } from "@julseb-lib/react"
 import { useAuthContext } from "context"
@@ -26,7 +26,7 @@ export const LoginForm = () => {
             [e.target.id]: e.target.value,
         })
 
-    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: FormEvent) => {
         e.preventDefault()
 
         if (savePassword) {

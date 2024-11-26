@@ -2,7 +2,12 @@
 
 import { useEffect, useState } from "react"
 import { NavLink } from "react-router-dom"
-import { uuid, Skeleton, ButtonIcon, useLibTheme } from "@julseb-lib/react"
+import {
+    uuid,
+    Skeleton,
+    ButtonIcon,
+    useLibTheme
+} from "@julseb-lib/react"
 import { useAuthContext } from "context"
 import { navLinks } from "data"
 import type { INavLink } from "types"
@@ -76,6 +81,7 @@ export const Nav = () => {
             )}
 
             <ButtonIcon
+                // icon="moon"
                 icon={selectedTheme === "dark" ? "sun" : "moon"}
                 size={24}
                 variant="transparent"

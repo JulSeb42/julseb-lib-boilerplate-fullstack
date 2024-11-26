@@ -17,6 +17,7 @@ export const UserCard: FC<IUserCard> = ({ user }) => {
             flexDirection="column"
             padding="xs"
             borderRadius="m"
+            textAlign="center"
         >
             <UserAvatar user={user} size={48} />
             <Text tag="strong">{user?.fullName}</Text>

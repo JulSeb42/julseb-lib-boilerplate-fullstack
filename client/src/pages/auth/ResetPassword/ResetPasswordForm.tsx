@@ -1,6 +1,6 @@
 /*=============================================== ResetPasswordForm ===============================================*/
 
-import { useState, useEffect, type ChangeEvent, type FormEvent } from "react"
+import { useState, useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import {
     Form,
@@ -62,7 +62,7 @@ export const ResetPasswordForm = () => {
         }
     }
 
-    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    const handleSubmit = (e: FormEvent) => {
         e.preventDefault()
 
         authService

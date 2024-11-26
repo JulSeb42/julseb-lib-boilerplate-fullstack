@@ -9,4 +9,8 @@ export const StyledUserCard = styled(Card)`
     &:hover {
         transform: scale(1.02);
     }
+
+    & > * {
+        justify-self: top;
+    }
 `

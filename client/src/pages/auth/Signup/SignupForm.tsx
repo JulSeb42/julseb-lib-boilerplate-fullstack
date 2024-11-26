@@ -1,6 +1,6 @@
 /*=============================================== SignupForm ===============================================*/
 
-import { useState, type ChangeEvent, type FormEvent } from "react"
+import { useState,  } from "react"
 import { useNavigate } from "react-router-dom"
 import { Form, Input, passwordRegex, InputCheck } from "@julseb-lib/react"
 import { useAuthContext } from "context"
@@ -45,7 +45,7 @@ export const SignupForm = () => {
         }
     }
 
-    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: FormEvent) => {
         e.preventDefault()
 
         if (!passwordRegex.test(inputs.password)) {

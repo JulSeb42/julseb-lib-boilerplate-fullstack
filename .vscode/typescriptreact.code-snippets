@@ -38,5 +38,9 @@
     "Prepend": {
         "prefix": "prepend",
         "body": "/* Prepend $1 - DO NOT REMOVE */"
+    },
+    "Use effect": {
+        "prefix": "usee",
+        "body": "useEffect(() => {\n    $1\n}, [])"
     }
 }

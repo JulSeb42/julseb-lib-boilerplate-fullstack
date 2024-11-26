@@ -1,6 +1,6 @@
 /*=============================================== ForgotPasswordForm ===============================================*/
 
-import { useState, type ChangeEvent, type FormEvent } from "react"
+import { useState } from "react"
 import { Form, Input } from "@julseb-lib/react"
 import { useNavigate } from "react-router-dom"
 import { authService } from "api"
@@ -17,7 +17,7 @@ export const ForgotPasswordForm = () => {
     const handleEmail = (e: ChangeEvent<HTMLInputElement>) =>
         setEmail(e.target.value)
 
-    const handleSubmitForm = async (e: FormEvent<HTMLFormElement>) => {
+    const handleSubmitForm = async (e: FormEvent) => {
         e.preventDefault()
 
         await authService

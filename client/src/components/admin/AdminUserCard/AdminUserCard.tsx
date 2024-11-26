@@ -49,8 +49,8 @@ export const AdminUserCard: FC<IAdminUserCard> = ({ user, handleDelete }) => {
                         />
 
                         <StyledDropdown isOpen={isOpen} setIsOpen={setIsOpen}>
-                            <StyledDropdownItem to={PATHS.USER(user._id)}>
-                                See profile
+                            <StyledDropdownItem to={PATHS.USER(user._id)} blank>
+                                Visit profile
                             </StyledDropdownItem>
 
                             <StyledDropdownItem

@@ -1,6 +1,5 @@
 /*=============================================== ImageUploader ===============================================*/
 
-import type { ChangeEvent } from "react"
 import { InputImage } from "@julseb-lib/react"
 import { cloudinaryService } from "api"
 import type { IImageUploader } from "components/ImageUploader/types"
