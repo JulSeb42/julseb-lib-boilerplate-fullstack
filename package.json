@@ -38,7 +38,7 @@
     "devDependencies": {
         "@faker-js/faker": "^9.2.0",
         "@types/bcryptjs": "^2.4.6",
-        "@types/cookie-parser": "^1.4.7",
+        "@types/cookie-parser": "^1.4.8",
         "@types/cors": "^2.8.17",
         "@types/figlet": "^1.7.0",
         "@types/morgan": "^1.9.9",
