@@ -21,10 +21,11 @@ import {
     surroundBrackets,
 } from "./utils/index.js"
 import { pascalName, kebabName } from "./partials/index.js"
-
 // Generate components, etc.
 
 export default (plop: NodePlopAPI) => {
+    const { load } = plop
+
     console.log(
         chalk.blueBright(
             figlet.textSync("JulSeb CLI", { horizontalLayout: "full" })
@@ -33,6 +34,7 @@ export default (plop: NodePlopAPI) => {
 
     /*====================== Actions ======================*/
 
+    load("plop-pack-remove") // With this helper you can remove files in your project. Full doc here https://github.com/TheSharpieOne/plop-pack-remove
     runCommand(plop) // With this helper you can run commands in a terminal => { type: "runCommand", command: "console.log("hello world")" }
 
     /*====================== Partials ======================*/

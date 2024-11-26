@@ -48,6 +48,7 @@
         "cross-env": "^7.0.3",
         "figlet": "^1.8.0",
         "plop": "^4.0.1",
+        "plop-pack-remove": "^1.1.0",
         "ts-node": "^10.9.2",
         "ts-node-dev": "^2.0.0",
         "tsx": "^4.19.2",
