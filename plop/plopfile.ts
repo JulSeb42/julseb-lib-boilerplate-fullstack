@@ -21,7 +21,6 @@ import {
     surroundBrackets,
 } from "./utils/index.js"
 import { pascalName, kebabName } from "./partials/index.js"
-// Generate components, etc.
 
 export default (plop: NodePlopAPI) => {
     const { load } = plop
