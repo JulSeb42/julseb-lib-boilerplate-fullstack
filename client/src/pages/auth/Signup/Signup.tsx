@@ -8,7 +8,7 @@ import { SignupForm } from "./SignupForm"
 
 export const Signup = () => {
     return (
-        <Page title="Signup" mainWidth="form">
+        <Page title="Signup" mainSize="form">
             <Text tag="h1">Create an account</Text>
 
             <SignupForm />

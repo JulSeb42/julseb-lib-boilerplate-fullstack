@@ -6,7 +6,7 @@ import { ForgotPasswordForm } from "./ForgotPasswordForm"
 
 export const ForgotPassword = () => {
     return (
-        <Page title="I forgot my password" mainWidth="form">
+        <Page title="I forgot my password" mainSize="form">
             <Text tag="h1">I forgot my password</Text>
 
             <Text>

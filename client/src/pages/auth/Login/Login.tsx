@@ -9,7 +9,7 @@ import { DemoLogin } from "./DemoLogin"
 
 export const Login = () => {
     return (
-        <Page title="Log in" mainWidth="form">
+        <Page title="Log in" mainSize="form">
             <Text tag="h1">Log in</Text>
 
             <LoginForm />
