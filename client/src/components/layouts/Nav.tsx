@@ -81,7 +81,6 @@ export const Nav = () => {
             )}
 
             <ButtonIcon
-                // icon="moon"
                 icon={selectedTheme === "dark" ? "sun" : "moon"}
                 size={24}
                 variant="transparent"

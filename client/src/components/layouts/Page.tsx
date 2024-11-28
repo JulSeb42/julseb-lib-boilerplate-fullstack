@@ -19,12 +19,13 @@ export const Page: FC<IPage> = ({
             ) : (
                 <>
                     <Header />
+
                     {!noWrapper ? (
                         <Wrapper>
                             <Main size={mainSize}>{children}</Main>
                         </Wrapper>
                     ) : (
-                        <Main size={mainSize}>{children}</Main>
+                        children
                     )}
                 </>
             )}

@@ -2,6 +2,7 @@
 
 import { Helmet } from "@julseb-lib/react"
 import { SITE_DATA } from "shared"
+import { ResetScroll } from "utils"
 
 export const BaseLayout: FC<IBaseLayout> = ({
     children,
@@ -25,6 +26,8 @@ export const BaseLayout: FC<IBaseLayout> = ({
             />
 
             {children}
+
+            <ResetScroll />
         </>
     )
 }
