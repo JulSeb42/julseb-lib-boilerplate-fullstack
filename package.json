@@ -16,6 +16,7 @@
         "plop:r": "yarn plop route",
         "plop:m": "yarn plop model",
         "plop:ty": "yarn plop type",
+        "plop:g": "yarn plop generator",
         "seed-users": "yarn tsx seed/seed.ts"
     },
     "dependencies": {
