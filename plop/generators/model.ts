@@ -32,14 +32,14 @@ export default (plop: NodePlopAPI) => {
             "Creating a type for your new model",
             {
                 type: "add",
-                path: `${BASE_SHARED_PATH}/types/{{ pascalCase name }}.type.ts`,
-                templateFile: `${TEMPLATES_PATH}/types/type.hbs`,
+                path: `${BASE_SHARED_PATH}/types/I{{ pascalCase name }}.interface.ts`,
+                templateFile: `${TEMPLATES_PATH}/types/interface.hbs`,
             },
             "Exporting your new type from types index.ts",
             {
                 type: "modify",
                 path: `${BASE_SHARED_PATH}/types/index.ts`,
-                template: 'export * from "./{{ pascalCase name }}.type"\n$1',
+                template: 'export * from "./I{{ pascalCase name }}.interface"\n$1',
                 pattern: /(\/\* Prepend - DO NOT REMOVE \*\/)/g,
             },
         ],
