@@ -2,12 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { NavLink } from "react-router-dom"
-import {
-    uuid,
-    Skeleton,
-    ButtonIcon,
-    useLibTheme
-} from "@julseb-lib/react"
+import { uuid, Skeleton } from "@julseb-lib/react"
 import { useAuthContext } from "context"
 import { navLinks } from "data"
 import type { INavLink } from "types"
@@ -15,8 +10,6 @@ import type { INavLink } from "types"
 export const Nav = () => {
     const { isLoggedIn, logoutUser, isLoading, user } = useAuthContext()
     const [allLinks, setAllLinks] = useState<Array<INavLink>>(undefined as any)
-
-    const { toggleTheme, selectedTheme } = useLibTheme()
 
     useEffect(() => {
         if (isLoggedIn) {
@@ -79,15 +72,6 @@ export const Nav = () => {
                     </button>
                 )
             )}
-
-            <ButtonIcon
-                icon={selectedTheme === "dark" ? "sun" : "moon"}
-                size={24}
-                variant="transparent"
-                color="background"
-                onClick={toggleTheme}
-                aria-label="Toggle theme"
-            />
         </>
     )
 }
