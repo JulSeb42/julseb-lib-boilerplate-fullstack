@@ -21,8 +21,7 @@ export const PATHS = {
     MY_ACCOUNT: "/my-account",
     EDIT_ACCOUNT: "/my-account/edit",
     EDIT_PASSWORD: "/my-account/edit-password",
-
     
-
-	/* Prepend path - DO NOT REMOVE */
+    
+    /* Prepend path - DO NOT REMOVE */
 }
