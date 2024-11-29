@@ -45,6 +45,7 @@
         "@types/multer": "^1.4.12",
         "@types/nodemailer": "^6.4.17",
         "chalk": "^5.3.0",
+        "cli-welcome": "^3.0.0",
         "cross-env": "^7.0.3",
         "figlet": "^1.8.0",
         "plop": "^4.0.1",

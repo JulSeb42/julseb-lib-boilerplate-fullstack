@@ -1,8 +1,7 @@
 /*=============================================== Plopfile ===============================================*/
 
 import type { NodePlopAPI } from "plop"
-import chalk from "chalk"
-import figlet from "figlet"
+import welcome from "cli-welcome"
 import { runCommand } from "./actions/index.js"
 import {
     generateComponent,
@@ -17,7 +16,6 @@ import {
 import {
     addOpenBrackets,
     addClosingBrackets,
-    generatePageRoute,
     surroundBrackets,
 } from "./utils/index.js"
 import { pascalName, kebabName } from "./partials/index.js"
@@ -25,11 +23,18 @@ import { pascalName, kebabName } from "./partials/index.js"
 export default (plop: NodePlopAPI) => {
     const { load } = plop
 
-    console.log(
-        chalk.blueBright(
-            figlet.textSync("JulSeb CLI", { horizontalLayout: "full" })
-        )
-    )
+    /*====================== Greetings ======================*/
+
+    welcome({
+        title: "Julseb CLI",
+        tagLine: "A tool to generate React with TS apps",
+        description: "",
+        bgColor: "#ffffff",
+        color: "#000000",
+        bold: true,
+        clear: true,
+        version: "1.0.0",
+    })
 
     /*====================== Actions ======================*/
 
@@ -43,7 +48,6 @@ export default (plop: NodePlopAPI) => {
 
     /*====================== Utils ======================*/
 
-    generatePageRoute("undefined", null) // Generate a client route as anon, protected or none of those
     surroundBrackets(plop) // Surround with brackets in templates when needed
     addOpenBrackets(plop) // Add double open brackets {{ where needed
     addClosingBrackets(plop) // Add double closing brackets }} where needed

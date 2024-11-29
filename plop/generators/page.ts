@@ -1,11 +1,7 @@
 /*=============================================== Generate page ===============================================*/
 
 import { toKebabCase, toTitleCase } from "@julseb-lib/utils"
-import {
-    generatePageRoute,
-    BASE_CLIENT_PATH,
-    TEMPLATES_PATH,
-} from "../utils/index.js"
+import { BASE_CLIENT_PATH, TEMPLATES_PATH } from "../utils/index.js"
 import type { NodePlopAPI, ActionType } from "plop"
 
 export default (plop: NodePlopAPI) => {
@@ -32,6 +28,14 @@ export default (plop: NodePlopAPI) => {
                 default: false,
             },
             {
+                type: "list",
+                name: "protected",
+                message: "Is your page protected or anon?",
+                choices: ["none", "protected", "anon"],
+                default: "none",
+                when: data => !data.admin,
+            },
+            {
                 type: "input",
                 name: "path",
                 message: "Enter url path",
@@ -45,14 +49,6 @@ export default (plop: NodePlopAPI) => {
                 name: "multi",
                 message: "Is this a multi file page?",
                 default: false,
-            },
-            {
-                type: "list",
-                name: "protected",
-                message: "Is your page protected or anon?",
-                choices: ["none", "protected", "anon"],
-                default: "none",
-                when: data => !data.admin,
             },
         ],
 
@@ -96,8 +92,8 @@ export default (plop: NodePlopAPI) => {
                     type: "modify",
                     path: `${BASE_CLIENT_PATH}/routes/routes.tsx`,
                     template: data?.admin
-                        ? generatePageRoute(data?.protected, true)
-                        : generatePageRoute(data?.protected),
+                        ? `{ path: PATHS.ADMIN_{{ constantCase name }}, element: <{{ pascalCase name }} />, type: {{ protected }},  },`
+                        : `{ path: PATHS.{{ constantCase name }}, element: <{{ pascalCase name }} />, type: "{{ protected }}",  },\n\t$1`,
                     pattern: /(\/\* Prepend route - DO NOT REMOVE \*\/)/g,
                 },
                 "Adding path to paths list",
@@ -105,8 +101,8 @@ export default (plop: NodePlopAPI) => {
                     type: "modify",
                     path: `${BASE_CLIENT_PATH}/routes/paths.ts`,
                     template: data?.admin
-                        ? 'ADMIN_{{ constantCase name }}: "/{{ pathCase path }}",\n\t$1'
-                        : '{{ constantCase name }}: "/{{ pathCase path }}",\n\t$1',
+                        ? 'ADMIN_{{ constantCase name }}: "{{ path }}",\n\t$1'
+                        : `{{ constantCase name }}: "{{ path }}",\n\t$1`,
                     pattern: /(\/\* Prepend path - DO NOT REMOVE \*\/)/g,
                 }
             )

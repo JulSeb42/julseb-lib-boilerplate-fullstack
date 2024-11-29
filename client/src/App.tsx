@@ -7,7 +7,7 @@ import {
     ThemeProvider,
     useLibTheme,
 } from "@julseb-lib/react"
-import { routes } from "routes"
+import { routes, AnonRoute, ProtectedRoute } from "routes"
 
 export const App = () => {
     const { theme } = useLibTheme()
@@ -17,6 +17,32 @@ export const App = () => {
             <ToasterProviderWrapper>
                 <Routes>
                     {routes.map(route => {
+                        if (route.type === "protected") {
+                            return (
+                                <Route
+                                    path={route.path}
+                                    element={
+                                        <ProtectedRoute>
+                                            {route.element}
+                                        </ProtectedRoute>
+                                    }
+                                    key={uuid()}
+                                />
+                            )
+                        }
+
+                        if (route.type === "anon") {
+                            return (
+                                <Route
+                                    path={route.path}
+                                    element={
+                                        <AnonRoute>{route.element}</AnonRoute>
+                                    }
+                                    key={uuid()}
+                                />
+                            )
+                        }
+
                         return (
                             <Route
                                 path={route.path}

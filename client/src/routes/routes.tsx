@@ -1,7 +1,7 @@
 /*=============================================== Routes ===============================================*/
 
 // import { Navigate } from "react-router-dom"
-import { ProtectedRoute, AnonRoute, PATHS } from "routes"
+import { PATHS } from "routes"
 import { Homepage } from "pages/Homepage"
 import { NotFound } from "pages/NotFound"
 import { AllUsers, PublicProfile } from "pages/user"
@@ -23,6 +23,7 @@ import { Users } from "pages/admin/Users/AdminUsers"
 type Route = {
     path: string
     element: JSX.Element
+    type: "none" | "protected" | "anon"
 }
 
 const redirects: Array<Route> = [
@@ -33,104 +34,27 @@ const redirects: Array<Route> = [
 ]
 
 export const routes: Array<Route> = [
-    { path: PATHS.ROOT, element: <Homepage /> },
-    { path: "*", element: <NotFound /> },
+    { path: PATHS.ROOT, element: <Homepage />, type: "none" },
+    { path: "*", element: <NotFound />, type: "none" },
 
-    { path: PATHS.USERS, element: <AllUsers /> },
-    { path: PATHS.USER(), element: <PublicProfile /> },
+    { path: PATHS.USERS, element: <AllUsers />, type: "none" },
+    { path: PATHS.USER(), element: <PublicProfile />, type: "none" },
 
-    {
-        path: PATHS.SIGNUP,
-        element: (
-            <AnonRoute>
-                <Signup />
-            </AnonRoute>
-        ),
-    },
-    { path: PATHS.THANK_YOU, element: <ThankYou /> },
-    { path: PATHS.VERIFY, element: <Verify /> },
-    {
-        path: PATHS.LOGIN,
-        element: (
-            <AnonRoute>
-                <Login />
-            </AnonRoute>
-        ),
-    },
-    {
-        path: PATHS.FORGOT_PASSWORD,
-        element: (
-            <AnonRoute>
-                <ForgotPassword />
-            </AnonRoute>
-        ),
-    },
-    {
-        path: PATHS.FORGOT_PASSWORD_SENT,
-        element: (
-            <AnonRoute>
-                <ForgotSent />
-            </AnonRoute>
-        ),
-    },
-    {
-        path: PATHS.RESET_PASSWORD,
-        element: (
-            <AnonRoute>
-                <ResetPassword />
-            </AnonRoute>
-        ),
-    },
-    {
-        path: PATHS.GOODBYE,
-        element: (
-            <AnonRoute>
-                <Goodbye />
-            </AnonRoute>
-        ),
-    },
+    { path: PATHS.SIGNUP, element: <Signup />, type: "anon" },
+    { path: PATHS.THANK_YOU, element: <ThankYou />, type: "none" },
+    { path: PATHS.VERIFY, element: <Verify />, type: "none" },
+    { path: PATHS.LOGIN, element: <Login />, type: "anon" },
+    { path: PATHS.FORGOT_PASSWORD, element: <ForgotPassword />, type: "anon" },
+    { path: PATHS.FORGOT_PASSWORD_SENT, element: <ForgotSent />, type: "anon" },
+    { path: PATHS.RESET_PASSWORD, element: <ResetPassword />, type: "anon" },
+    { path: PATHS.GOODBYE, element: <Goodbye />, type: "anon" },
 
-    {
-        path: PATHS.MY_ACCOUNT,
-        element: (
-            <ProtectedRoute>
-                <MyAccount />
-            </ProtectedRoute>
-        ),
-    },
-    {
-        path: PATHS.EDIT_ACCOUNT,
-        element: (
-            <ProtectedRoute>
-                <EditAccount />
-            </ProtectedRoute>
-        ),
-    },
-    {
-        path: PATHS.EDIT_PASSWORD,
-        element: (
-            <ProtectedRoute>
-                <EditPassword />
-            </ProtectedRoute>
-        ),
-    },
+    { path: PATHS.MY_ACCOUNT, element: <MyAccount />, type: "protected" },
+    { path: PATHS.EDIT_ACCOUNT, element: <EditAccount />, type: "protected" },
+    { path: PATHS.EDIT_PASSWORD, element: <EditPassword />, type: "protected" },
 
-    {
-        path: PATHS.ADMIN_HOME,
-        element: (
-            <ProtectedRoute>
-                <Admin />
-            </ProtectedRoute>
-        ),
-    },
-    {
-        path: PATHS.ADMIN_USERS,
-        element: (
-            <ProtectedRoute>
-                <Users />
-            </ProtectedRoute>
-        ),
-    },
+    { path: PATHS.ADMIN_HOME, element: <Admin />, type: "protected" },
+    { path: PATHS.ADMIN_USERS, element: <Users />, type: "protected" },
     /* Prepend route - DO NOT REMOVE */
 
     ...redirects,
