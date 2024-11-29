@@ -67,5 +67,5 @@ export default (plop: NodePlopAPI) => {
 
     /*====================== Plop ======================*/
 
-    generateGenerator(plop)
+    generateGenerator(plop) // yarn plop:g
 }
