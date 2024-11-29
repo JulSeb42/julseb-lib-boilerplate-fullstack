@@ -8,7 +8,6 @@ import {
     FONT_WEIGHTS,
     TRANSITIONS,
     MEDIA,
-    COLORS_LIGHT,
 } from "@julseb-lib/react"
 
 export const ADMIN_NAV_WIDTH = 200
@@ -19,7 +18,7 @@ export const StyledAdminNav = styled.nav`
     position: fixed;
     top: 0;
     left: 0;
-    background-color: ${COLORS_LIGHT.GRAY_50};
+    background-color: ${({ theme }) => theme.GRAY_50};
     padding: ${SPACERS.XXL} 0;
     box-shadow: ${SHADOWS.S};
     ${Mixins.Flexbox({
@@ -42,7 +41,7 @@ const ListCommon = css`
     })}
 
     a, button {
-        color: ${Mixins.ColorsHoverDefault("primary", null, "light")};
+        color: ${({ theme }) => Mixins.ColorsHoverDefault("primary", theme)};
         transition: ${TRANSITIONS.SHORT};
         text-decoration: none;
         font-weight: ${FONT_WEIGHTS.BLACK};
@@ -57,16 +56,18 @@ const ListCommon = css`
 
         @media ${MEDIA.HOVER} {
             &:hover {
-                color: ${Mixins.ColorsHoverHover("primary", null, "light")};
+                color: ${({ theme }) =>
+                    Mixins.ColorsHoverHover("primary", theme)};
             }
 
             &:active {
-                color: ${Mixins.ColorsHoverActive("primary", null, "light")};
+                color: ${({ theme }) =>
+                    Mixins.ColorsHoverActive("primary", theme)};
             }
         }
 
         &.active {
-            background-color: ${COLORS_LIGHT.GRAY_100};
+            background-color: ${({ theme }) => theme.GRAY_100};
         }
     }
 `

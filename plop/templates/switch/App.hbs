@@ -1,0 +1,58 @@
+/*=============================================== App ===============================================*/
+
+import { Routes, Route } from "react-router-dom"
+import {
+    ToasterProviderWrapper,
+    uuid,
+    ThemeProvider,
+    useLibTheme,
+} from "@julseb-lib/react"
+import { routes, AnonRoute, ProtectedRoute } from "routes"
+
+export const App = () => {
+    const { theme } = useLibTheme()
+
+    return (
+        <ThemeProvider theme={theme}>
+            <ToasterProviderWrapper>
+                <Routes>
+                    {routes.map(route => {
+                        if (route.type === "protected") {
+                            return (
+                                <Route
+                                    path={route.path}
+                                    element={
+                                        <ProtectedRoute>
+                                            {route.element}
+                                        </ProtectedRoute>
+                                    }
+                                    key={uuid()}
+                                />
+                            )
+                        }
+
+                        if (route.type === "anon") {
+                            return (
+                                <Route
+                                    path={route.path}
+                                    element={
+                                        <AnonRoute>{route.element}</AnonRoute>
+                                    }
+                                    key={uuid()}
+                                />
+                            )
+                        }
+
+                        return (
+                            <Route
+                                path={route.path}
+                                element={route.element}
+                                key={uuid()}
+                            />
+                        )
+                    })}
+                </Routes>
+            </ToasterProviderWrapper>
+        </ThemeProvider>
+    )
+}
