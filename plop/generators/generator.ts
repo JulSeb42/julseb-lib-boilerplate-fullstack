@@ -2,7 +2,7 @@
 
 
 import type { NodePlopAPI } from "plop"
-import { toCamelCase } from "@julseb-lib/utils"
+import { toCamelCase, toPascalCase } from "@julseb-lib/utils"
 
 export default (plop: NodePlopAPI) => {
     const { setGenerator } = plop
@@ -26,19 +26,19 @@ export default (plop: NodePlopAPI) => {
                 {
                     type: "modify",
                     path: "./generators/index.ts",
-                    template: `export { default as {{ camelCase name }} } from "./{{>kebabName}}.js"\n$1`,
+                    template: `export { default as generate{{>pascalName}} } from "./{{>kebabName}}.js"\n$1`,
                     pattern: /(\/\* Prepend export - DO NOT REMOVE \*\/)/g,
                 },
                 {
                     type: "modify",
                     path: "./plopfile.ts",
-                    template: `{{ camelCase name }},\n\t$1`,
+                    template: `generate{{>pascalName}},\n\t$1`,
                     pattern: /(\/\* Prepend import - DO NOT REMOVE \*\/)/g,
                 },
                 {
                     type: "modify",
                     path: "./plopfile.ts",
-                    template: `${toCamelCase(data?.name)}(plop) // yarn plop:${data?.name[0]}\n\t$1`,
+                    template: `generate${toPascalCase(data?.name)}(plop) // yarn plop:${data?.name[0]}\n\t$1`,
                     pattern: /(\/\* Prepend function - DO NOT REMOVE \*\/)/g,
                 },
                 "Don't forget to add the scripts in package.json :)",

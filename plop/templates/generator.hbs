@@ -1,0 +1,17 @@
+/*=============================================== Generate {{>pascalName}} ===============================================*/
+
+import type { NodePlopAPI } from "plop"
+
+export default (plop: NodePlopAPI) => {
+    const { setGenerator } = plop
+
+    setGenerator("{{>kebabName}}", {
+        description: "",
+        prompts: [],
+        actions: [],
+        // actions: data => {
+        //     const actions = []
+        //     return actions
+        // },
+    })
+}
