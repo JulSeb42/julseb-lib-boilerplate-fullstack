@@ -3,7 +3,7 @@
 import { http } from "api"
 import { generateServerRoute } from "utils"
 import type { SERVER_PATHS } from "shared"
-import type { ApiResponse, {{>pascalName }} } from "types"
+import type { ApiResponse, I{{>pascalName }} } from "types"
 
 type PATHS = keyof typeof SERVER_PATHS.{{ constantCase name }}
 
@@ -13,11 +13,11 @@ const generateRoute = (
 ) => generateServerRoute("{{ constantCase name }}", route, id)
 
 class {{>pascalName }}Service {
-    all{{>pascalName }}s(): ApiResponse<Array<{{>pascalName }}>> {
+    all{{>pascalName }}s(): ApiResponse<Array<I{{>pascalName }}>> {
         return http.get(generateRoute("ALL_{{ constantCase name }}S"))
     }
 
-    get{{>pascalName }}(id: string): ApiResponse<{{>pascalName }}> {
+    get{{>pascalName }}(id: string): ApiResponse<I{{>pascalName }}> {
         return http.get(generateRoute("GET_{{ constantCase name }}", id))
     }
 }
