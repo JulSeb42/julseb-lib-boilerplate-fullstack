@@ -11,6 +11,7 @@ import type {
     ReactChildren,
     DispatchState as DispatchType,
 } from "@julseb-lib/react/types"
+import type { COLORS_LIGHT, COLORS_DARK } from "@julseb-lib/react"
 
 declare global {
     type Children = ReactChildren
@@ -19,4 +20,10 @@ declare global {
     type ElementType = ElType
     type ChangeEvent<T> = Change<T>
     type FormEvent = Form<HTMLFormElement>
+}
+
+declare module "styled-components" {
+    type ThemeLight = typeof COLORS_LIGHT
+    type ThemeDark = typeof COLORS_DARK
+    export interface DefaultTheme extends ThemeLight, ThemeDark {}
 }

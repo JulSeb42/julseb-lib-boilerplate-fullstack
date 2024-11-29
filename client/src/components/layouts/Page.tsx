@@ -22,7 +22,9 @@ export const Page: FC<IPage> = ({
 
                     {!noWrapper ? (
                         <Wrapper>
-                            <Main size={mainSize}>{children}</Main>
+                            <Main size={mainSize} minHeight={`100vh - 56px`}>
+                                {children}
+                            </Main>
                         </Wrapper>
                     ) : (
                         children

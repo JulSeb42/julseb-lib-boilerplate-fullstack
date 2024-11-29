@@ -24,8 +24,8 @@ export const StyledAvatar = styled(Image).attrs({ aspectRatio: "1" })`
 export const AvatarContainer = styled.div`
     width: 100%;
     height: 100%;
-    background-color: ${COLORS_LIGHT.SECONDARY_500};
-    color: ${COLORS_LIGHT.BACKGROUND};
+    background-color: ${({ theme }) => theme.SECONDARY_500};
+    color: ${({ theme }) => theme.BACKGROUND};
     font-size: ${FONT_SIZES.H2};
     font-weight: ${FONT_WEIGHTS.BLACK};
     transition: ${TRANSITIONS.SHORT};
@@ -52,7 +52,7 @@ export const UserName = styled(Text)`
 
     &.Admin {
         font-size: ${FONT_SIZES.SMALL};
-        color: ${COLORS_LIGHT.GRAY_200};
+        color: ${({ theme }) => theme.GRAY_200};
     }
 `
 
