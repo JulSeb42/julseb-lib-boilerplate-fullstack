@@ -34,18 +34,6 @@ export default (plop: NodePlopAPI) => {
             },
             {
                 type: "confirm",
-                name: "as",
-                message: "Add `as` prop?",
-                default: false,
-            },
-            {
-                type: "confirm",
-                name: "children",
-                message: "Add `children` prop?",
-                default: true,
-            },
-            {
-                type: "confirm",
                 name: "export",
                 message: "Export this component from components folder?",
                 default: true,

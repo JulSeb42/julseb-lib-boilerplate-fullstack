@@ -1,8 +1,7 @@
 /*=============================================== Generate generator ===============================================*/
 
-
 import type { NodePlopAPI } from "plop"
-import { toCamelCase, toPascalCase } from "@julseb-lib/utils"
+import { toPascalCase } from "@julseb-lib/utils"
 
 export default (plop: NodePlopAPI) => {
     const { setGenerator } = plop
@@ -38,13 +37,15 @@ export default (plop: NodePlopAPI) => {
                 {
                     type: "modify",
                     path: "./plopfile.ts",
-                    template: `generate${toPascalCase(data?.name)}(plop) // yarn plop:${data?.name[0]}\n\t$1`,
+                    template: `generate${toPascalCase(
+                        data?.name
+                    )}(plop) // yarn plop:${data?.name[0]}\n\t$1`,
                     pattern: /(\/\* Prepend function - DO NOT REMOVE \*\/)/g,
                 },
                 "Don't forget to add the scripts in package.json :)",
             ]
 
             return actions
-        }
+        },
     })
 }

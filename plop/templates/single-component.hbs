@@ -1,6 +1,5 @@
 /*=============================================== {{>pascalName }} component ===============================================*/
 
-{{#if props}}
 export const {{>pascalName }}: FC<I{{>pascalName }}> = ({ }) => {
     return (
         <{{ lowerCase tag }}>
@@ -12,12 +11,3 @@ export const {{>pascalName }}: FC<I{{>pascalName }}> = ({ }) => {
 interface I{{>pascalName }} {
 
 }
-{{else}}
-export const {{>pascalName }} = () => {
-    return (
-        <{{ lowerCase tag }}>
-            
-        </{{ lowerCase tag }}>
-    )
-}
-{{/if}}

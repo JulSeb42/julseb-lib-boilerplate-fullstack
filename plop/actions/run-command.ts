@@ -21,3 +21,15 @@ export default (plop: NodePlopAPI) => {
             })
     )
 }
+
+// const runCommand = (command: string) =>
+//     new Promise((resolve, reject) => {
+//         exec(command, (err, stdout) => {
+//             if (err) {
+//                 console.error(err.message)
+//                 reject(err)
+//             }
+
+//             resolve(stdout)
+//         })
+//     })

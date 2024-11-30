@@ -15,12 +15,6 @@ export default (plop: NodePlopAPI) => {
                 message: "Enter the component's name",
             },
             {
-                type: "confirm",
-                name: "props",
-                message: "Add props?",
-                default: false,
-            },
-            {
                 type: "input",
                 name: "tag",
                 message: "Which HTML tag?",
