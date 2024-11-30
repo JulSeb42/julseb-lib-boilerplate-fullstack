@@ -92,8 +92,8 @@ export default (plop: NodePlopAPI) => {
                     type: "modify",
                     path: `${BASE_CLIENT_PATH}/routes/routes.tsx`,
                     template: data?.admin
-                        ? `{ path: PATHS.ADMIN_{{ constantCase name }}, element: <{{ pascalCase name }} />, type: {{ protected }},  },\n\t$1`
-                        : `{ path: PATHS.{{ constantCase name }}, element: <{{ pascalCase name }} />, type: "{{ protected }}",  },\n\t$1`,
+                        ? `{ path: PATHS.ADMIN_{{ constantCase name }}, element: <{{ pascalCase name }} />, type: "{{ protected }}" },\n\t$1`
+                        : `{ path: PATHS.{{ constantCase name }}, element: <{{ pascalCase name }} />, type: "{{ protected }}" },\n\t$1`,
                     pattern: /(\/\* Prepend route - DO NOT REMOVE \*\/)/g,
                 },
                 "Adding path to paths list",
