@@ -42,8 +42,7 @@ export default (plop: NodePlopAPI) => {
                     type: "modify",
                     path: `${BASE_CLIENT_PATH}/components/index.ts`,
                     // @ts-ignore
-                    template:
-                        'export * from "components/{{ pascalCase name }}"\n$1',
+                    template: 'export * from "./{{ pascalCase name }}"\n$1',
                     pattern: /(\/\* Prepend - DO NOT REMOVE \*\/)/g,
                 })
 
