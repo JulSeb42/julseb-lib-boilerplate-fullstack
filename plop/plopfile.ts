@@ -11,8 +11,7 @@ import {
     generateSingleComponent,
     generateType,
     generateGenerator,
-    generateHello,
-	/* Prepend import - DO NOT REMOVE */
+    /* Prepend import - DO NOT REMOVE */
 } from "./generators/index.js"
 import {
     addOpenBrackets,
@@ -59,8 +58,7 @@ export default (plop: NodePlopAPI) => {
     generateSingleComponent(plop) // yarn plop:sc
     generatePage(plop) // yarn plop:p
     generateType(plop) // yarn plop:ty
-    generateHello(plop) // yarn plop:h
-	/* Prepend function - DO NOT REMOVE */
+    /* Prepend function - DO NOT REMOVE */
 
     /*====================== Server ======================*/
 
