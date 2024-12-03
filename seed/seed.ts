@@ -27,7 +27,7 @@ mongoose.connect(MONGODB_URI)
 
 const realUser: Partial<User> = {
     fullName: "Julien Sebag",
-    email: "julien.sebag@me.com",
+    email: "julien@email.com",
     password: hash,
     verified: true,
     verifyToken: getRandomString(20),
