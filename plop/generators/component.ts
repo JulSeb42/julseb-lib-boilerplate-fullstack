@@ -21,16 +21,17 @@ export default (plop: NodePlopAPI) => {
                 default: "div",
             },
             {
-                type: "input",
-                name: "attribute",
-                message: "Enter HTML attribute",
-                default: (data: { tag: string }) => data.tag,
-            },
-            {
                 type: "confirm",
                 name: "forward",
                 message: "Add `forwardRef`?",
                 default: false,
+            },
+            {
+                type: "input",
+                name: "attribute",
+                message: "Enter HTML attribute",
+                default: (data: { tag: string }) => data.tag,
+                when: data => data.forward,
             },
             {
                 type: "confirm",
