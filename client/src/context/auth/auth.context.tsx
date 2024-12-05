@@ -1,12 +1,6 @@
 /*=============================================== Auth context ===============================================*/
 
-import {
-    useState,
-    useEffect,
-    createContext,
-    useContext,
-    type ReactNode,
-} from "react"
+import { useState, useEffect, createContext, useContext } from "react"
 import { authService } from "api"
 import type { IAuthContext } from "context/types"
 import type { User } from "types"
