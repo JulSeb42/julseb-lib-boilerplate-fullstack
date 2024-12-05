@@ -45,6 +45,7 @@ export default (plop: NodePlopAPI) => {
                 pattern:
                     /(\{\/\* Prepend context close - DO NOT REMOVE \*\/\})/g,
             },
+            "Don't forget to add it in your main.tsx!",
         ],
     })
 }

@@ -14,9 +14,7 @@ import "styles/index.css"
 ReactDOM.createRoot(document.getElementById("root")!).render(
     <BrowserRouter>
         <AuthProviderWrapper>
-            {/* Prepend context open - DO NOT REMOVE */}
             <App />
-            {/* Prepend context close - DO NOT REMOVE */}
         </AuthProviderWrapper>
-    </BrowserRouter>
+    </BrowserRouter>,
 )
