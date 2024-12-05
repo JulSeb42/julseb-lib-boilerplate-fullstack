@@ -86,5 +86,5 @@ export const AuthProviderWrapper: FC<IAuthProviderWrapper> = ({ children }) => {
 export const useAuthContext = () => useContext(AuthContext) as IAuthContext
 
 interface IAuthProviderWrapper {
-    children: ReactNode
+    children: Children
 }
