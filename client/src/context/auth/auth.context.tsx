@@ -2,8 +2,8 @@
 
 import { useState, useEffect, createContext, useContext } from "react"
 import { authService } from "api"
-import type { IAuthContext } from "context/types"
 import type { User } from "types"
+import type { IAuthContext } from "./types"
 
 export const AuthContext = createContext<IAuthContext>(null as any)
 
