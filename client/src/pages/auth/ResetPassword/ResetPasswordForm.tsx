@@ -22,7 +22,7 @@ export const ResetPasswordForm = () => {
     const { token, id } = useParams<{ token: string; id: string }>()
 
     const [foundUser, setFoundUser] = useState<null | undefined | User>(
-        undefined
+        undefined,
     )
     const [isLoading, setIsLoading] = useState(true)
 

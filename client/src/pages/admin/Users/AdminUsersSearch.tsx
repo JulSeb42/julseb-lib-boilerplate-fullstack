@@ -27,8 +27,8 @@ export const AdminUsersSearch: FC<IUsersSearch> = ({
             users.filter(user =>
                 user.fullName
                     .toLowerCase()
-                    .includes(e.target.value.toLowerCase())
-            )
+                    .includes(e.target.value.toLowerCase()),
+            ),
         )
     }
 
@@ -48,8 +48,8 @@ export const AdminUsersSearch: FC<IUsersSearch> = ({
                 : users.filter(
                       user =>
                           user.role.toLowerCase() ===
-                          e.target.value.toLowerCase()
-                  )
+                          e.target.value.toLowerCase(),
+                  ),
         )
     }
 

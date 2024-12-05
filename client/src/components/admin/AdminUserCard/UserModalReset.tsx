@@ -28,7 +28,7 @@ export const UserModalReset: FC<IUserModalReset> = ({
                     {
                         duration: 5000,
                         withTimer: true,
-                    }
+                    },
                 )
                 setIsOpen(false)
             })
@@ -36,7 +36,7 @@ export const UserModalReset: FC<IUserModalReset> = ({
                 toast.error(err.response.data.message, {
                     duration: 5000,
                     withTimer: true,
-                })
+                }),
             )
     }
 

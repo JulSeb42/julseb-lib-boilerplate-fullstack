@@ -7,7 +7,7 @@ type ParamFn = (param: string | Array<string>) => string
 export const generateServerRoute = (
     route: keyof typeof SERVER_PATHS,
     path: string,
-    param?: string | Array<string>
+    param?: string | Array<string>,
 ) => {
     const PATHS = SERVER_PATHS[route]
     const root = PATHS.ROOT

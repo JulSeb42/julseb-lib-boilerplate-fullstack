@@ -37,8 +37,8 @@ export const Nav = () => {
         } else {
             setAllLinks(
                 navLinks.filter(
-                    link => link.type === "anon" || link.type === "none"
-                )
+                    link => link.type === "anon" || link.type === "none",
+                ),
             )
         }
     }, [isLoggedIn])
@@ -70,7 +70,7 @@ export const Nav = () => {
                     <button onClick={onClick} key={uuid()}>
                         {text}
                     </button>
-                )
+                ),
             )}
         </>
     )

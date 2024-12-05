@@ -32,7 +32,7 @@ export const AdminUsersList: FC<IAdminUsersList> = ({
 
     const { paginatedData, totalPages } = usePaginatedData<User>(
         filteredUsers ?? [],
-        18
+        18,
     )
 
     if (loading || (!response && !error)) return null // TODO: add skeleton

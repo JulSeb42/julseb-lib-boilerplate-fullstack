@@ -17,13 +17,13 @@ import type { User } from "types"
 
 export const UsersList = () => {
     const { response, error, loading } = useFetch<AxiosResponse>(
-        userService.allUsers()
+        userService.allUsers(),
     )
     const users: Array<User> | null = response?.data
 
     const { paginatedData, totalPages } = usePaginatedData<User>(
         users ?? [],
-        15
+        15,
     )
 
     if (loading || (!response && !error)) return <UsersListSkeleton />

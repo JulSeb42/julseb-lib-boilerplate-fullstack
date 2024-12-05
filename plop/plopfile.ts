@@ -11,6 +11,7 @@ import {
     generateSingleComponent,
     generateType,
     generateGenerator,
+    generateContext,
     /* Prepend import - DO NOT REMOVE */
 } from "./generators/index.js"
 import {
@@ -27,7 +28,7 @@ export default (plop: NodePlopAPI) => {
 
     welcome({
         title: "Julseb CLI",
-        tagLine: "A tool to generate React with TS apps",
+        tagLine: "A tool to generate React code in TS apps",
         description: "",
         bgColor: "#ffffff",
         color: "#000000",
@@ -58,6 +59,7 @@ export default (plop: NodePlopAPI) => {
     generateSingleComponent(plop) // yarn plop:sc
     generatePage(plop) // yarn plop:p
     generateType(plop) // yarn plop:ty
+    generateContext(plop) // yarn plop:co
     /* Prepend function - DO NOT REMOVE */
 
     /*====================== Server ======================*/

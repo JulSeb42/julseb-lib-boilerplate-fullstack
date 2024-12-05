@@ -18,7 +18,7 @@ export const Verify = () => {
 
     const [isLoading, setIsLoading] = useState<boolean>(true)
     const [errorMessage, setErrorMessage] = useState<IErrorMessage | string>(
-        undefined
+        undefined,
     )
 
     useEffect(() => {

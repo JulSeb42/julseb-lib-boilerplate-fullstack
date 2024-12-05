@@ -11,7 +11,7 @@ import type { IErrorMessage, User } from "types"
 
 export const Users = () => {
     const [response, setResponse] = useState<AxiosResponse | undefined>(
-        undefined
+        undefined,
     )
     const [search, setSearch] = useState("")
     const [users, setUsers] = useState<Array<User>>([])

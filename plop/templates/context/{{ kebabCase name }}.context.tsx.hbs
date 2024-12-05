@@ -1,0 +1,16 @@
+/*=============================================== {{>pascalName}} context ===============================================*/
+
+import { createContext, useContext } from "react"
+import type { I{{>pascalName}}Context } from "./types"
+
+export const {{>pascalName}}Context = createContext<I{{>pascalName}}Context>(null as any)
+
+export const {{>pascalName}}ProviderWrapper: FC<I{{>pascalName}}ProviderWrapper> = ({ children }) => {
+    return <{{>pascalName}}Context.Provider value={{addOpenBrackets}}{{addClosingBrackets}}>{children}</{{>pascalName}}Context.Provider>
+}
+
+interface I{{>pascalName}}ProviderWrapper {
+    children: Children
+}
+
+export const use{{>pascalName}}Context = () => useContext({{>pascalName}}Context) as I{{>pascalName}}Context

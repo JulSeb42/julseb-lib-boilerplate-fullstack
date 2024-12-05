@@ -1,6 +1,6 @@
 /*=============================================== SignupForm ===============================================*/
 
-import { useState,  } from "react"
+import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { Form, Input, passwordRegex, InputCheck } from "@julseb-lib/react"
 import { useAuthContext } from "context"
