@@ -14,8 +14,9 @@ import {
 import { userService } from "api"
 import { ErrorMessage, ImageUploader } from "components"
 import { useAuthContext } from "context"
+import { defaultUwConfig } from "data"
 import { PATHS } from "routes"
-import type { IErrorMessage } from "types"
+import type { IErrorMessage, PictureData } from "types"
 
 export const EditAccountForm = () => {
     const navigate = useNavigate()
@@ -30,16 +31,22 @@ export const EditAccountForm = () => {
     const [errorMessage, setErrorMessage] = useState<IErrorMessage>(undefined)
     const [isModalOpen, setIsModalOpen] = useState(false)
 
+    const [pictureData, setPictureData] = useState<PictureData>(
+        user?.avatar ? { ...defaultUwConfig, url: avatar } : (undefined as any),
+    )
+
     const handleInputs = (e: ChangeEvent<HTMLInputElement>) =>
         setInputs({ ...inputs, [e.target.id]: e.target.value })
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault()
 
+        setIsLoading(true)
+
         userService
             .editAccount(user?._id!, {
                 ...inputs,
-                avatar,
+                avatar: pictureData ? pictureData.url : (undefined as any),
             })
             .then(res => {
                 setUser(res.data.user)
@@ -72,29 +79,10 @@ export const EditAccountForm = () => {
                     disabled
                 />
                 <ImageUploader
-                    value={avatar || ""}
-                    setImageUrl={setAvatar}
-                    setIsLoading={setIsLoading}
-                    id="avatar"
-                    label="Profile picture"
-                    icons={{ empty: "user" }}
-                    iconSizes={{ empty: 64 }}
-                    size={120}
-                    helperBottom={{
-                        element: (
-                            <Button
-                                variant="transparent"
-                                noPadding
-                                color="danger"
-                                type="button"
-                                onClick={() => setIsModalOpen(true)}
-                                disabled={!avatar}
-                            >
-                                Remove profile picture
-                            </Button>
-                        ),
-                        linkColor: "danger",
-                    }}
+                    label="Avatar"
+                    pictureData={pictureData}
+                    setPictureData={setPictureData}
+                    uwConfig={defaultUwConfig}
                 />
             </Form>
 

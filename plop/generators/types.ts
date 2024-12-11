@@ -64,7 +64,7 @@ export default (plop: NodePlopAPI) => {
                     type: "modify",
                     path: `${BASE_CLIENT_PATH}/types/index.ts`,
                     template: `export * from "${fileName}"\n$1`,
-                    pattern: /(\/\* prepend - do not remove \*\/)/g,
+                    pattern: /(\/\* Prepend - DO NOT REMOVE \*\/)/g,
                 },
             ]
 

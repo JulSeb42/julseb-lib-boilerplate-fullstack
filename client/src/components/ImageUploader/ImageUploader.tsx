@@ -1,51 +1,109 @@
-/*=============================================== ImageUploader ===============================================*/
+/*=============================================== Image uploader ===============================================*/
 
-import { InputImage } from "@julseb-lib/react"
-import { cloudinaryService } from "api"
-import type { IImageUploader } from "components/ImageUploader/types"
+import { useEffect, useRef } from "react"
+import { Cloudinary } from "@cloudinary/url-gen"
+import { AdvancedImage, responsive, placeholder } from "@cloudinary/react"
+import classNames from "classnames"
+import { Icon, InputContainer, Image } from "@julseb-lib/react"
+import { useAuthContext } from "context"
+import { StyledImageUploader, HoverContainer } from "./styles"
+import type { IImageUploader } from "./types"
 
-export const ImageUploader: FC<IImageUploader> = ({
-    value,
-    id,
-    setImageUrl,
-    setIsLoading,
-    ...rest
-}) => {
-    const handleImage = (e: ChangeEvent<HTMLInputElement>) => {
-        e.preventDefault()
+const cloudName = import.meta.env.VITE_CLOUDINARY_NAME
 
-        const uploadData = new FormData()
-        setIsLoading(true)
+export const ImageUploader = ({
+    uwConfig,
+    pictureData,
+    setPictureData,
+    label,
+    labelComment,
+    helper,
+    helperBottom,
+}: IImageUploader) => {
+    const { user } = useAuthContext()
 
-        uploadData.append("imageUrl", e.target.files ? e.target.files[0] : "")
+    const uploadWidgetRef = useRef(null)
+    const uploadButtonRef = useRef<HTMLButtonElement>(null)
 
-        cloudinaryService
-            .uploadImage(uploadData)
-            .then(res => {
-                setImageUrl(res.secure_url)
-                setIsLoading(false)
-            })
-            .catch(err => console.log(err))
+    const cld = new Cloudinary({
+        cloud: {
+            cloudName,
+        },
+    })
 
-        if (e.target.files && e.target.files[0]) {
-            // @ts-expect-error
-            setImageUrl(e.target.files[0])
-            const reader = new FileReader()
-            reader.addEventListener("load", () => {
-                // @ts-expect-error
-                setImageUrl(reader.result)
-            })
+    useEffect(() => {
+        const initializeUploadWidget = () => {
+            // @ts-ignore
+            if (window.cloudinary && uploadButtonRef.current) {
+                // Create upload widget
+                // @ts-ignore
+                uploadWidgetRef.current = window.cloudinary.createUploadWidget(
+                    uwConfig,
+                    // @ts-ignore
+                    (error, result) => {
+                        if (!error && result && result.event === "success") {
+                            console.log("Upload successful:", result.info)
+                            setPictureData(result.info)
+                        }
+                    },
+                )
 
-            reader.readAsDataURL(e.target.files[0])
+                // Add click event to open widget
+                const handleUploadClick = () => {
+                    if (uploadWidgetRef.current) {
+                        // @ts-ignore
+                        uploadWidgetRef.current.open()
+                    }
+                }
+
+                const buttonElement = uploadButtonRef.current
+                // @ts-ignore
+                buttonElement.addEventListener("click", handleUploadClick)
+
+                // Cleanup
+                return () => {
+                    // @ts-ignore
+                    buttonElement.removeEventListener(
+                        "click",
+                        handleUploadClick,
+                    )
+                }
+            }
         }
-    }
+
+        initializeUploadWidget()
+    }, [uwConfig, setPictureData])
 
     return (
-        <InputImage
-            {...rest}
-            id={id}
-            value={value}
-            onChange={(e: any) => handleImage(e)}
-        />
+        <InputContainer
+            label={label}
+            labelComment={labelComment}
+            helper={helper}
+            helperBottom={helperBottom}
+        >
+            <StyledImageUploader ref={uploadButtonRef} type="button">
+                <Icon
+                    src="user"
+                    size={64}
+                    color="primary"
+                    className={classNames({
+                        Visible: user ? user?.avatar !== undefined : false,
+                    })}
+                />
+
+                {user?.avatar && <Image src={user.avatar} />}
+
+                {pictureData && (
+                    <AdvancedImage
+                        cldImg={cld.image(pictureData.public_id)}
+                        plugins={[responsive(), placeholder({ mode: "blur" })]}
+                    />
+                )}
+
+                <HoverContainer>
+                    <Icon src="edit" color="primary" size={48} />
+                </HoverContainer>
+            </StyledImageUploader>
+        </InputContainer>
     )
 }

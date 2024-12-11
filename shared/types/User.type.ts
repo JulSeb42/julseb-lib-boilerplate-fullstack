@@ -11,7 +11,7 @@ export type User = {
     verified: boolean
     verifyToken: string
     resetToken?: string
-    avatar: string
+    avatar?: string | undefined | null
     role: UserRole
 }
 
