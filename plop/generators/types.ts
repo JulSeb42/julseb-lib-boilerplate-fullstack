@@ -30,7 +30,7 @@ export default (plop: NodePlopAPI) => {
         ],
         actions: data => {
             const fileNameAdd = `{{ pascalCase name }}.${
-                data?.interface ? "interface" : "type"
+                data?.interface ? "interface" : "types"
             }.ts`
             const fileName = `./{{ pascalCase name }}.${
                 data?.interface ? "interface" : "type"
