@@ -24,7 +24,7 @@ export default (plop: NodePlopAPI) => {
             {
                 type: "list",
                 name: "type",
-                message: "Is your page protected or anon?",
+                message: "What type of page is it?",
                 choices: ["none", "protected", "anon", "admin"],
                 default: "none",
             },
