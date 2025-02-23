@@ -53,8 +53,8 @@ export const routes: Array<Route> = [
     { path: PATHS.EDIT_ACCOUNT, element: <EditAccount />, type: "protected" },
     { path: PATHS.EDIT_PASSWORD, element: <EditPassword />, type: "protected" },
 
-    { path: PATHS.ADMIN_HOME, element: <Admin />, type: "protected" },
-    { path: PATHS.ADMIN_USERS, element: <Users />, type: "protected" },
+    { path: PATHS.ADMIN_HOME, element: <Admin />, type: "admin" },
+    { path: PATHS.ADMIN_USERS, element: <Users />, type: "admin" },
     /* Prepend route - DO NOT REMOVE */
 
     ...redirects,
