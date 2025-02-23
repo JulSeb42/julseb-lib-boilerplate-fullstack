@@ -22,25 +22,21 @@ export default (plop: NodePlopAPI) => {
                 default: (data: { name: string }) => toTitleCase(data.name),
             },
             {
-                type: "confirm",
-                name: "admin",
-                message: "Is this an admin page?",
-                default: false,
-            },
-            {
                 type: "list",
-                name: "protected",
+                name: "type",
                 message: "Is your page protected or anon?",
-                choices: ["none", "protected", "anon"],
+                choices: ["none", "protected", "anon", "admin"],
                 default: "none",
-                when: data => !data.admin,
             },
             {
                 type: "input",
                 name: "path",
                 message: "Enter url path",
-                default: (data: { name: string; admin: boolean }) =>
-                    data.admin
+                default: (data: {
+                    name: string
+                    type: "none" | "protected" | "anon" | "admin"
+                }) =>
+                    data.type === "admin"
                         ? `/admin/${toKebabCase(data.name)}`
                         : `/${toKebabCase(data.name)}`,
             },
@@ -55,7 +51,7 @@ export default (plop: NodePlopAPI) => {
         actions: data => {
             const actions: Array<ActionType> = []
 
-            if (data?.admin) {
+            if (data?.type === "admin") {
                 actions.push("Creating your new page", {
                     type: "add",
                     path: data?.multi
@@ -67,7 +63,7 @@ export default (plop: NodePlopAPI) => {
                 })
             }
 
-            if (!data?.admin) {
+            if (data?.type !== "admin") {
                 actions.push("Creating your new page", {
                     type: "add",
                     path: data?.multi
@@ -82,27 +78,30 @@ export default (plop: NodePlopAPI) => {
                 {
                     type: "modify",
                     path: `${BASE_CLIENT_PATH}/routes/routes.tsx`,
-                    template: data?.admin
-                        ? 'import { {{ pascalCase name }} } from "pages/admin/{{ pascalCase name }}"\n$1'
-                        : 'import { {{ pascalCase name }} } from "pages/{{ pascalCase name }}"\n$1',
+                    template:
+                        data?.type === "admin"
+                            ? 'import { {{ pascalCase name }} } from "pages/admin/{{ pascalCase name }}"\n$1'
+                            : 'import { {{ pascalCase name }} } from "pages/{{ pascalCase name }}"\n$1',
                     pattern: /(\/\* Prepend import - DO NOT REMOVE \*\/)/g,
                 },
                 "Adding your new page to the paths array",
                 {
                     type: "modify",
                     path: `${BASE_CLIENT_PATH}/routes/routes.tsx`,
-                    template: data?.admin
-                        ? `{ path: PATHS.ADMIN_{{ constantCase name }}, element: <{{ pascalCase name }} />, type: "{{ protected }}" },\n\t$1`
-                        : `{ path: PATHS.{{ constantCase name }}, element: <{{ pascalCase name }} />, type: "{{ protected }}" },\n\t$1`,
+                    template:
+                        data?.type === "admin"
+                            ? `{ path: PATHS.ADMIN_{{ constantCase name }}, element: <{{ pascalCase name }} />, type: "{{ type }}" },\n\t$1`
+                            : `{ path: PATHS.{{ constantCase name }}, element: <{{ pascalCase name }} />, type: "{{ type }}" },\n\t$1`,
                     pattern: /(\/\* Prepend route - DO NOT REMOVE \*\/)/g,
                 },
                 "Adding path to paths list",
                 {
                     type: "modify",
                     path: `${BASE_CLIENT_PATH}/routes/paths.ts`,
-                    template: data?.admin
-                        ? 'ADMIN_{{ constantCase name }}: "{{ path }}",\n\t$1'
-                        : `{{ constantCase name }}: "{{ path }}",\n\t$1`,
+                    template:
+                        data?.type === "admin"
+                            ? 'ADMIN_{{ constantCase name }}: "{{ path }}",\n\t$1'
+                            : `{{ constantCase name }}: "{{ path }}",\n\t$1`,
                     pattern: /(\/\* Prepend path - DO NOT REMOVE \*\/)/g,
                 }
             )
@@ -110,12 +109,14 @@ export default (plop: NodePlopAPI) => {
             if (data?.multi) {
                 actions.push("Creating export from new folder", {
                     type: "add",
-                    path: data?.admin
-                        ? `${BASE_CLIENT_PATH}/pages/admin/{{ pascalCase name }}/index.ts`
-                        : `${BASE_CLIENT_PATH}/pages/{{ pascalCase name }}/index.ts`,
-                    templateFile: data?.admin
-                        ? `${TEMPLATES_PATH}/admin/page-index.hbs`
-                        : `${TEMPLATES_PATH}/page/page-index.hbs`,
+                    path:
+                        data?.type === "admin"
+                            ? `${BASE_CLIENT_PATH}/pages/admin/{{ pascalCase name }}/index.ts`
+                            : `${BASE_CLIENT_PATH}/pages/{{ pascalCase name }}/index.ts`,
+                    templateFile:
+                        data?.type === "admin"
+                            ? `${TEMPLATES_PATH}/admin/page-index.hbs`
+                            : `${TEMPLATES_PATH}/page/page-index.hbs`,
                 })
             }
 

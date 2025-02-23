@@ -23,7 +23,7 @@ import { Users } from "pages/admin/Users/AdminUsers"
 type Route = {
     path: string
     element: JSX.Element
-    type: "none" | "protected" | "anon"
+    type: "none" | "protected" | "anon" | "admin"
 }
 
 const redirects: Array<Route> = [
