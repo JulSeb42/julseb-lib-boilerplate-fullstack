@@ -11,17 +11,17 @@ const { {{ constantCase name }}: PATHS } = SERVER_PATHS
 /*====================== Get all {{>pascalName }}s ======================*/
 
 router.get(PATHS.ALL_{{ constantCase name }}S, async (_, res, next) => {
-    return await {{>pascalName }}Model.find()
+    return (await {{>pascalName }}Model.find()
         .then(found{{>pascalName }}s => res.status(200).json(found{{>pascalName }}s))
-        .catch(err => next(err))
+        .catch(err => next(err))) as any /* quick & dirty fix */
 })
 
 /*====================== Get {{>pascalName }} by id ======================*/
 
 router.get(PATHS.GET_{{ constantCase name }}(), async (req, res, next) => {
-    return await {{>pascalName }}Model.findById(req.params.id)
+    return (await {{>pascalName }}Model.findById(req.params.id)
         .then(found{{>pascalName }} => res.status(200).json(found{{>pascalName }}))
-        .catch(err => next(err))
+        .catch(err => next(err))) as any
 })
 
 export default router
