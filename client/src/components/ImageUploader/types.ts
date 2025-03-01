@@ -1,6 +1,7 @@
 /*=============================================== ImageUploader types ===============================================*/
 
 import type { ILibInputContainer } from "@julseb-lib/react/component-props"
+import type { LibIcon } from "@julseb-lib/react/types"
 import type { PictureData } from "types"
 
 export interface IImageUploader
@@ -30,4 +31,5 @@ export interface IImageUploader
     }
     pictureData: PictureData
     setPictureData: DispatchState<PictureData>
+    icon?: LibIcon
 }

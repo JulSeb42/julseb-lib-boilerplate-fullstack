@@ -19,22 +19,22 @@ const { USERS: PATHS } = SERVER_PATHS
 /*====================== Get all users ======================*/
 
 router.get(PATHS.ALL_USERS, async (_, res, next) => {
-    return await UserModel.find()
+    return (await UserModel.find()
         .then(usersFromDb => res.status(200).json(usersFromDb))
-        .catch(err => next(err))
+        .catch(err => next(err))) as any /* quick & dirty fix */
 })
 
 /*====================== Get user by ID ======================*/
 
 router.get(PATHS.USER(), async (req, res, next) => {
-    return await UserModel.findById(req.params.id)
+    return (await UserModel.findById(req.params.id)
         .then(userFromDb => res.status(200).json(userFromDb))
         .catch(err => {
             next(err)
             return res.status(400).json({
                 message: COMMON_TEXTS.ERRORS.USER_NOT_EXIST,
             })
-        })
+        })) as any
 })
 
 /*====================== Edit user ======================*/
@@ -48,7 +48,7 @@ router.put(PATHS.EDIT_ACCOUNT(), async (req, res, next) => {
             .json({ message: COMMON_TEXTS.ERRORS.FULL_NAME_EMPTY })
     }
 
-    return await UserModel.findByIdAndUpdate(
+    return (await UserModel.findByIdAndUpdate(
         req.params.id,
         { ...req.body },
         { new: true }
@@ -62,7 +62,7 @@ router.put(PATHS.EDIT_ACCOUNT(), async (req, res, next) => {
                 authToken: authToken,
             })
         })
-        .catch(err => next(err))
+        .catch(err => next(err))) as any
 })
 
 /*====================== Edit password ======================*/
@@ -76,7 +76,7 @@ router.put(PATHS.EDIT_PASSWORD(), async (req, res, next) => {
         })
     }
 
-    return await UserModel.findById(req.params.id)
+    return (await UserModel.findById(req.params.id)
         .then(async foundUser => {
             if (!foundUser) {
                 return res
@@ -108,17 +108,17 @@ router.put(PATHS.EDIT_PASSWORD(), async (req, res, next) => {
                 return res.status(201).json({ user: updatedUser, authToken })
             })
         })
-        .catch(err => next(err))
+        .catch(err => next(err))) as any
 })
 
 /*====================== Delete user ======================*/
 
 router.delete(PATHS.DELETE_ACCOUNT(), async (req, res, next) => {
-    return await UserModel.findByIdAndDelete(req.params.id)
+    return (await UserModel.findByIdAndDelete(req.params.id)
         .then(() =>
             res.status(200).json({ message: COMMON_TEXTS.USER_DELETED })
         )
-        .catch(err => next(err))
+        .catch(err => next(err))) as any
 })
 
 export default router

@@ -44,7 +44,7 @@ router.post(PATHS.SIGNUP, async (req, res, next) => {
         return
     }
 
-    return await UserModel.findOne({ email })
+    return (await UserModel.findOne({ email })
         .then(async foundUser => {
             if (foundUser) {
                 return res
@@ -80,7 +80,7 @@ router.post(PATHS.SIGNUP, async (req, res, next) => {
                 return res.status(201).json({ user: createdUser, authToken })
             })
         })
-        .catch(err => next(err))
+        .catch(err => next(err))) as any /* quick & dirty fix */
 })
 
 /*====================== Login ======================*/
@@ -94,7 +94,7 @@ router.post(PATHS.LOGIN, async (req, res, next) => {
             .json({ message: COMMON_TEXTS.ERRORS.PROVIDE_EMAIL_AND_PASSWORD })
     }
 
-    return await UserModel.findOne({ email })
+    return (await UserModel.findOne({ email })
         .then(foundUser => {
             if (!foundUser) {
                 return res
@@ -118,7 +118,7 @@ router.post(PATHS.LOGIN, async (req, res, next) => {
 
             return res.status(200).json({ authToken: authToken })
         })
-        .catch(err => next(err))
+        .catch(err => next(err))) as any
 })
 
 /*====================== Verify if user is logged in ======================*/
@@ -128,7 +128,7 @@ router.get(PATHS.LOGGED_IN, isAuthenticated, (req, res) => {
     console.log(`req.payload: ${req.payload}`)
 
     // @ts-expect-error
-    return res.status(200).json(req.payload)
+    return res.status(200).json(req.payload) as any
 })
 
 /*====================== Verify account ======================*/
@@ -184,7 +184,7 @@ router.post(PATHS.FORGOT_PASSWORD, async (req, res, next) => {
             .json({ message: COMMON_TEXTS.ERRORS.EMAIL_NOT_VALID })
     }
 
-    return await UserModel.findOne({ email })
+    return (await UserModel.findOne({ email })
         .then(async foundUser => {
             if (!foundUser) {
                 return res
@@ -212,7 +212,7 @@ router.post(PATHS.FORGOT_PASSWORD, async (req, res, next) => {
                 return res.status(200).json(res.body)
             })
         })
-        .catch(err => next(err))
+        .catch(err => next(err))) as any
 })
 
 /*====================== Reset password ======================*/
@@ -226,7 +226,7 @@ router.put(PATHS.RESET_PASSWORD, async (req, res, next) => {
             .json({ message: COMMON_TEXTS.ERRORS.EMAIL_NOT_VALID })
     }
 
-    return await UserModel.findById(id)
+    return (await UserModel.findById(id)
         .then(async foundUser => {
             if (!foundUser) {
                 return res
@@ -251,7 +251,7 @@ router.put(PATHS.RESET_PASSWORD, async (req, res, next) => {
                 return res.status(200).json({ user: updatedUser })
             })
         })
-        .catch(err => next(err))
+        .catch(err => next(err))) as any
 })
 
 export default router

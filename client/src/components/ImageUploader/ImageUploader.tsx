@@ -19,6 +19,7 @@ export const ImageUploader = ({
     labelComment,
     helper,
     helperBottom,
+    icon = "user",
 }: IImageUploader) => {
     const { user } = useAuthContext()
 
@@ -82,14 +83,18 @@ export const ImageUploader = ({
             helperBottom={helperBottom}
         >
             <StyledImageUploader ref={uploadButtonRef} type="button">
-                <Icon
-                    src="user"
-                    size={64}
-                    color="primary"
-                    className={classNames({
-                        Visible: user ? user?.avatar !== undefined : false,
-                    })}
-                />
+                {typeof icon === "string" ? (
+                    <Icon
+                        src={icon}
+                        size={64}
+                        color="primary"
+                        className={classNames({
+                            Visible: user ? user?.avatar !== undefined : false,
+                        })}
+                    />
+                ) : (
+                    icon
+                )}
 
                 {user?.avatar && <Image src={user.avatar} />}
 

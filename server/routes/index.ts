@@ -3,7 +3,7 @@
 import { Router } from "express"
 import { SERVER_PATHS } from "../../shared"
 import auth from "./auth"
-import users from "./users"
+import user from "./user"
 import uploader from "./uploader"
 /* Prepend import - DO NOT REMOVE */
 
@@ -14,7 +14,7 @@ router.get("/", (_, res) => {
 })
 
 router.use(SERVER_PATHS.AUTH.ROOT, auth)
-router.use(SERVER_PATHS.USERS.ROOT, users)
+router.use(SERVER_PATHS.USERS.ROOT, user)
 router.use(SERVER_PATHS.UPLOADER.ROOT, uploader)
 /* Prepend router - DO NOT REMOVE */
 
