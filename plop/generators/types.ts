@@ -29,42 +29,36 @@ export default (plop: NodePlopAPI) => {
             },
         ],
         actions: data => {
-            const fileNameAdd = `{{ pascalCase name }}.${
-                data?.interface ? "interface" : "types"
-            }.ts`
-            const fileName = `./{{ pascalCase name }}.${
-                data?.interface ? "interface" : "type"
-            }`
+            const extensionPrepend = data?.interface ? "interface" : "type"
+            const fileName = `{{ pascalCase name }}.${extensionPrepend}`
 
             const actions = [
                 {
                     type: "add",
-                    path: `${BASE_SHARED_PATH}/types/${fileNameAdd}`,
-                    templateFile: `${TEMPLATES_PATH}/types/${
-                        data?.interface ? "interface" : "type"
-                    }.hbs`,
+                    path: `${BASE_SHARED_PATH}/types/${fileName}.ts`,
+                    templateFile: `${TEMPLATES_PATH}/types/${extensionPrepend}.hbs`,
                 },
                 {
                     type: "modify",
                     path: `${BASE_SHARED_PATH}/types/index.ts`,
-                    template: `export * from "${fileName}"\n$1`,
-                    pattern: /(\/\* Prepend - DO NOT REMOVE \*\/)/g,
+                    template: `export * from "./${fileName}"\n$1`,
+                    pattern:
+                        /(\/\* Prepend export new type - DO NOT REMOVE \*\/)/g,
                 },
             ]
 
             const actionsClient = [
                 {
                     type: "add",
-                    path: `${BASE_CLIENT_PATH}/types/${fileNameAdd}`,
-                    templateFile: `${TEMPLATES_PATH}/types/${
-                        data?.interface ? "interface" : "type"
-                    }.hbs`,
+                    path: `${BASE_CLIENT_PATH}/types/${fileName}.ts`,
+                    templateFile: `${TEMPLATES_PATH}/types/${extensionPrepend}.hbs`,
                 },
                 {
                     type: "modify",
                     path: `${BASE_CLIENT_PATH}/types/index.ts`,
-                    template: `export * from "${fileName}"\n$1`,
-                    pattern: /(\/\* Prepend - DO NOT REMOVE \*\/)/g,
+                    template: `export * from "./${fileName}"\n$1`,
+                    pattern:
+                        /(\/\* Prepend export new type - DO NOT REMOVE \*\/)/g,
                 },
             ]
 

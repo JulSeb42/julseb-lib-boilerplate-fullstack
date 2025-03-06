@@ -1,4 +1,4 @@
 /*=============================================== Exports ===============================================*/
 
 export * from "./User.model"
-/* Prepend - DO NOT REMOVE */
+/* Prepend new model - DO NOT REMOVE */

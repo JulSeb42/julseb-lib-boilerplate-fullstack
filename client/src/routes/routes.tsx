@@ -18,7 +18,7 @@ import {
 import { MyAccount, EditAccount, EditPassword } from "pages/account"
 import { Admin } from "pages/admin/Admin"
 import { Users } from "pages/admin/Users/AdminUsers"
-/* Prepend import - DO NOT REMOVE */
+/* Prepend import new file - DO NOT REMOVE */
 
 type Route = {
     path: string
@@ -55,7 +55,8 @@ export const routes: Array<Route> = [
 
     { path: PATHS.ADMIN_HOME, element: <Admin />, type: "admin" },
     { path: PATHS.ADMIN_USERS, element: <Users />, type: "admin" },
-    /* Prepend route - DO NOT REMOVE */
+
+    /* Prepend new route - DO NOT REMOVE */
 
     ...redirects,
 ]

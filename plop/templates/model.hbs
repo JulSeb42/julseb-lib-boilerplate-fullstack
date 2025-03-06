@@ -1,13 +1,13 @@
 /*=============================================== {{>pascalName }} model ===============================================*/
 
 import { Schema, model } from "mongoose"
-import type { I{{>pascalName }} } from "../../shared/types"
+import type { {{>pascalName }} } from "../../shared/types"
 
-const {{ camelCase name }}Schema = new Schema<I{{>pascalName }}>(
+const {{ camelCase name }}Schema = new Schema<{{>pascalName }}>(
     {
         
     },
     { timestamps: true }
 )
 
-export const {{>pascalName }}Model = model<I{{>pascalName }}>("{{>pascalName }}", {{ camelCase name }}Schema)
+export const {{>pascalName }}Model = model<{{>pascalName }}>("{{>pascalName }}", {{ camelCase name }}Schema)

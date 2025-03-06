@@ -29,7 +29,7 @@ export default (plop: NodePlopAPI) => {
                 type: "modify",
                 path: `${BASE_CLIENT_PATH}/main.tsx`,
                 template: ` {{>pascalName}}ProviderWrapper,\n\t$1`,
-                pattern: /(\/\* Prepend import - DO NOT REMOVE \*\/)/g,
+                pattern: /(\/\* Prepend generated context import - DO NOT REMOVE \*\/)/g,
             },
             {
                 type: "modify",

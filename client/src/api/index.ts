@@ -1,7 +1,7 @@
 /*=============================================== Export all api functions ===============================================*/
 
-export * from "api/http-common"
-export * from "api/auth.service"
-export * from "api/user.service"
-export * from "api/cloudinary.service"
-/* Prepend - DO NOT REMOVE */
+export * from "./http-common"
+export * from "./auth.service"
+export * from "./user.service"
+export * from "./cloudinary.service"
+/* Prepend export api functions - DO NOT REMOVE */

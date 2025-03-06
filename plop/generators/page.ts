@@ -61,9 +61,7 @@ export default (plop: NodePlopAPI) => {
                     // @ts-ignore
                     verbose: false,
                 })
-            }
-
-            if (data?.type !== "admin") {
+            } else {
                 actions.push("Creating your new page", {
                     type: "add",
                     path: data?.multi
@@ -82,7 +80,8 @@ export default (plop: NodePlopAPI) => {
                         data?.type === "admin"
                             ? 'import { {{ pascalCase name }} } from "pages/admin/{{ pascalCase name }}"\n$1'
                             : 'import { {{ pascalCase name }} } from "pages/{{ pascalCase name }}"\n$1',
-                    pattern: /(\/\* Prepend import - DO NOT REMOVE \*\/)/g,
+                    pattern:
+                        /(\/\* Prepend import new file - DO NOT REMOVE \*\/)/g,
                 },
                 "Adding your new page to the paths array",
                 {
@@ -92,7 +91,7 @@ export default (plop: NodePlopAPI) => {
                         data?.type === "admin"
                             ? `{ path: PATHS.ADMIN_{{ constantCase name }}, element: <{{ pascalCase name }} />, type: "{{ type }}" },\n\t$1`
                             : `{ path: PATHS.{{ constantCase name }}, element: <{{ pascalCase name }} />, type: "{{ type }}" },\n\t$1`,
-                    pattern: /(\/\* Prepend route - DO NOT REMOVE \*\/)/g,
+                    pattern: /(\/\* Prepend new route - DO NOT REMOVE \*\/)/g,
                 },
                 "Adding path to paths list",
                 {
@@ -102,7 +101,7 @@ export default (plop: NodePlopAPI) => {
                         data?.type === "admin"
                             ? 'ADMIN_{{ constantCase name }}: "{{ path }}",\n\t$1'
                             : `{{ constantCase name }}: "{{ path }}",\n\t$1`,
-                    pattern: /(\/\* Prepend path - DO NOT REMOVE \*\/)/g,
+                    pattern: /(\/\* Prepend new path - DO NOT REMOVE \*\/)/g,
                 }
             )
 
