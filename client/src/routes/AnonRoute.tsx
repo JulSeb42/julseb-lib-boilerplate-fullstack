@@ -11,13 +11,11 @@ export const AnonRoute: FC<IAnonRoute> = ({
 }) => {
     const { isLoggedIn, isLoading } = useAuthContext()
 
-    return isLoading ? (
-        <PageLoading />
-    ) : !isLoggedIn ? (
-        children
-    ) : (
-        <Navigate to={redirectTo} />
-    )
+    if(isLoading) return <PageLoading />
+
+    if(!isLoggedIn) return children
+
+    return <Navigate to={redirectTo} />
 }
 
 interface IAnonRoute {

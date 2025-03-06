@@ -11,13 +11,11 @@ export const ProtectedRoute: FC<IProtectedRoute> = ({
 }) => {
     const { isLoggedIn, isLoading } = useAuthContext()
 
-    return isLoading ? (
-        <PageLoading />
-    ) : isLoggedIn ? (
-        children
-    ) : (
-        <Navigate to={redirectTo} />
-    )
+    if (isLoading) return <PageLoading />
+
+    if (isLoggedIn) return children
+
+    return <Navigate to={redirectTo} />
 }
 
 interface IProtectedRoute {
