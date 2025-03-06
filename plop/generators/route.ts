@@ -47,7 +47,7 @@ export default (plop: NodePlopAPI) => {
             {
                 type: "add",
                 path: `${BASE_SHARED_PATH}/types/{{ pascalCase name }}.type.ts`,
-                templateFile: `${TEMPLATES_PATH}/types/types.hbs`,
+                templateFile: `${TEMPLATES_PATH}/types/type.hbs`,
             },
             "Exporting your new type",
             {
