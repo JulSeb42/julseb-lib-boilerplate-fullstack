@@ -10,6 +10,4 @@ export * from "./user/UserCard"
 export * from "./user/UserCardSkeleton"
 export * from "./admin/AdminPage"
 export * from "./admin/AdminUserCard"
-export * from "components/layouts/Header"
-export * from "components/layouts/BaseLayout"
-/* Prepend - DO NOT REMOVE */
+/* Prepend export components - DO NOT REMOVE */
