@@ -13,6 +13,7 @@ const config = (app: any) => {
         cors({
             credentials: true,
             origin: ORIGIN,
+            allowedHeaders: "Access-Control-Allow-Origin",
         })
     )
 
