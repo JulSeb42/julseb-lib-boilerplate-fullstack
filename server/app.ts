@@ -12,7 +12,14 @@ import "./db"
 
 const app = express()
 config(app)
-app.options("*", cors())
+
+app.use(function (req, res, next) {
+	res.header("Access-Control-Allow-Origin", `${process.env.API_URL}/api`) // update to match the domain you will make the request from
+	res.header("Content-type", "application/json")
+	next()
+})
+
+// app.options("*", cors())
 app.use(BASE_API_URL, allRoutes)
 errorHandler(app)
 
