@@ -7,6 +7,8 @@ import { Page } from "components"
 export const Homepage = () => {
     const { isLoggedIn, user } = useAuthContext()
 
+	console.log({ isLoggedIn, user })
+
     return (
         <Page title="Home">
             <Text tag="h1">Hello World!</Text>
