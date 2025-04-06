@@ -19,8 +19,7 @@ const password = "Password42"
 const salt = bcrypt.genSaltSync()
 const hash = bcrypt.hashSync(password, salt)
 
-const MONGODB_URI =
-	"mongodb+srv://julien:AmazingPassword42@cluster0.lyb91.mongodb.net/boilerplate-react-rest"
+const MONGODB_URI = "mongodb://localhost/boilerplate-react-rest"
 
 mongoose.connect(MONGODB_URI)
 
