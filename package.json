@@ -4,8 +4,9 @@
     "private": true,
     "type": "commonjs",
     "scripts": {
+		"install": "npm i --force --legacy-peer-deps",
         "build": "yarn tsc && cd client && yarn build",
-        "install": "cd client && yarn",
+        "install:client": "cd client && yarn",
         "server": "tsx server/index.ts",
         "client": "cd client && yarn dev",
         "dev": "concurrently --kill-others 'yarn server' 'yarn client'",
