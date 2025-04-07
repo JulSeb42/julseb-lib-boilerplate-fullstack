@@ -9,6 +9,7 @@
         "server": "tsx server/index.ts",
         "client": "cd client && yarn dev",
         "dev": "concurrently --kill-others 'yarn server' 'yarn client'",
+		"start": "concurrently --kill-others 'yarn server' 'yarn client'",
         "plop": "cross-env NODE_OPTIONS='--import tsx' plop --plopfile=plop/plopfile.ts",
         "plop:c": "yarn plop component",
         "plop:sc": "yarn plop single-component",
