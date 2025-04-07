@@ -2,9 +2,9 @@
     "name": "julseb-lib-boilerplate-fullstack",
     "version": "0.0.0",
     "private": true,
-    "type": "module",
+    "type": "commonjs",
     "scripts": {
-        "build": "tsc && cd client && yarn build",
+        "build": "yarn tsc && cd client && yarn build",
         "install": "cd client && yarn",
         "server": "tsx server/index.ts",
         "client": "cd client && yarn dev",
