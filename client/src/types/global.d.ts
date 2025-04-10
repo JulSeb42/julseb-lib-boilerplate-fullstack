@@ -1,30 +1,28 @@
-/*=============================================== Global types ===============================================*/
-
 import type {
-    FunctionComponent,
-    ElementType as ElType,
-    ChangeEvent as Change,
-    FormEvent as Form,
+	FunctionComponent,
+	ElementType as ElType,
+	ChangeEvent as Change,
+	FormEvent as Form,
 } from "react"
 import "styled-components"
 import type { COLORS_LIGHT, COLORS_DARK } from "@julseb-lib/react"
 import type {
-    ReactChildren,
-    DispatchState as DispatchType,
+	ReactChildren,
+	DispatchState as DispatchType,
 } from "@julseb-lib/react/types"
 
 declare global {
-    type Children = ReactChildren
-    type DispatchState<T> = DispatchType<T>
-    type FC<T = FunctionComponent> = FunctionComponent<T>
-    type ElementType = ElType
-    type ChangeEvent<T> = Change<T>
-    type FormEvent = Form<HTMLFormElement>
+	type Children = ReactChildren
+	type DispatchState<T> = DispatchType<T>
+	type FC<T = FunctionComponent> = FunctionComponent<T>
+	type ElementType = ElType
+	type ChangeEvent<T> = Change<T>
+	type FormEvent = Form<HTMLFormElement>
 }
 
 declare module "styled-components" {
-    type ThemeLight = typeof COLORS_LIGHT
-    type ThemeDark = typeof COLORS_DARK
+	type ThemeLight = typeof COLORS_LIGHT
+	type ThemeDark = typeof COLORS_DARK
 
-    export interface DefaultTheme extends ThemeLight, ThemeDark {}
+	export interface DefaultTheme extends ThemeLight, ThemeDark {}
 }

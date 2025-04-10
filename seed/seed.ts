@@ -1,5 +1,3 @@
-/*=============================================== Seed fake users ===============================================*/
-
 import "dotenv/config"
 import mongoose from "mongoose"
 import bcrypt from "bcryptjs"

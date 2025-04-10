@@ -1,23 +1,21 @@
-/*=============================================== VerifySkeleton ===============================================*/
-
 import { Skeleton } from "@julseb-lib/react"
 import { Page } from "components"
 
 export const VerifySkeleton = () => {
-    return (
-        <Page title="Verify your account">
-            <Skeleton
-                width="40%"
-                height={60}
-                animation="shine"
-                borderRadius="s"
-            />
-            <Skeleton
-                width="80%"
-                height={24}
-                animation="shine"
-                borderRadius="s"
-            />
-        </Page>
-    )
+	return (
+		<Page title="Verify your account">
+			<Skeleton
+				width="40%"
+				height={60}
+				animation="shine"
+				borderRadius="s"
+			/>
+			<Skeleton
+				width="80%"
+				height={24}
+				animation="shine"
+				borderRadius="s"
+			/>
+		</Page>
+	)
 }

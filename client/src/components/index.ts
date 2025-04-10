@@ -1,5 +1,3 @@
-/*=============================================== Export all components ===============================================*/
-
 export * from "./layouts/Page"
 export * from "./DangerZone"
 export * from "./ImageUploader"

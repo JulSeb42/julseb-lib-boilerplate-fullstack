@@ -1,5 +1,3 @@
-/*=============================================== Homepage ===============================================*/
-
 import { useEffect } from "react"
 import { Text } from "@julseb-lib/react"
 import { useAuthContext } from "context"

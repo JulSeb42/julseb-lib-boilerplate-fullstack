@@ -1,5 +1,3 @@
-/*=============================================== All routes ===============================================*/
-
 import { Router } from "express"
 import { SERVER_PATHS } from "../../shared"
 import auth from "./auth"
@@ -10,7 +8,7 @@ import uploader from "./uploader"
 const router = Router()
 
 router.get("/", (_, res) => {
-    res.json("All good in here")
+	res.json("All good in here")
 })
 
 router.use(SERVER_PATHS.AUTH.ROOT, auth)

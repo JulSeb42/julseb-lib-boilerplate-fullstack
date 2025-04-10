@@ -1,9 +1,7 @@
-/*=============================================== Name to PascalCase ===============================================*/
-
 import type { NodePlopAPI } from "plop"
 
 export default (plop: NodePlopAPI) => {
-    const { setPartial } = plop
+	const { setPartial } = plop
 
-    setPartial("pascalName", "{{ pascalCase name }}")
+	setPartial("pascalName", "{{ pascalCase name }}")
 }

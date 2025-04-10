@@ -1,5 +1,3 @@
-/*=============================================== AdminMain types ===============================================*/
-
 export interface IAdminMain {
-    children?: Children
+	children?: Children
 }
