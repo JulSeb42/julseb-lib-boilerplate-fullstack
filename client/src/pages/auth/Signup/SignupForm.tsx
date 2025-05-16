@@ -20,7 +20,7 @@ export const SignupForm = () => {
 		email: "",
 		password: "",
 	})
-	const [savePassword, setSavePassword] = useState(true)
+	const [saveEmail, setSaveEmail] = useState(true)
 	const [errorMessage, setErrorMessage] =
 		useState<ErrorMessageType>(undefined)
 	const [validationPassword, setValidationPassword] =
@@ -51,7 +51,7 @@ export const SignupForm = () => {
 			return
 		}
 
-		if (savePassword) {
+		if (saveEmail) {
 			window.localStorage.setItem(STORAGE_ITEM_NAME, inputs.email)
 		} else {
 			window.localStorage.removeItem(STORAGE_ITEM_NAME)
@@ -101,8 +101,8 @@ export const SignupForm = () => {
 					label="Save your email address for faster login?"
 					type="checkbox"
 					variant="toggle"
-					checked={savePassword}
-					onChange={e => setSavePassword(e.target.checked)}
+					checked={saveEmail}
+					onChange={e => setSaveEmail(e.target.checked)}
 				/>
 			</Form>
 
