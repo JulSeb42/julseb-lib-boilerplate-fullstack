@@ -4,7 +4,7 @@ import cors from "cors"
 import config from "./config"
 import allRoutes from "./routes"
 import { errorHandler } from "./error-handling"
-import { BASE_API_URL } from "../shared"
+import { BASE_API_URL } from "./utils"
 
 import "./db"
 

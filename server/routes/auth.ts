@@ -5,12 +5,12 @@ import { passwordRegex, emailRegex, getRandomString } from "@julseb-lib/utils"
 import { UserModel } from "../models"
 import { isAuthenticated } from "../middleware"
 import { jwtConfig, SALT_ROUNDS, TOKEN_SECRET, sendMail } from "../utils"
-import { COMMON_TEXTS, SERVER_PATHS } from "../../shared"
+import { COMMON_TEXTS, SERVER_PATHS } from "../utils"
 import type {
 	SignupFormData,
 	LoginFormData,
 	ForgotPasswordFormData,
-} from "../../shared/types"
+} from "../types"
 
 const router = Router()
 

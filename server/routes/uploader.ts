@@ -1,6 +1,6 @@
 import { Router } from "express"
 import { fileUploader } from "../config/cloudinary.config"
-import { SERVER_PATHS } from "../../shared"
+import { SERVER_PATHS } from "../utils"
 
 const router = Router()
 

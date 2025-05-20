@@ -1,5 +1,5 @@
 import { Router } from "express"
-import { SERVER_PATHS } from "../../shared"
+import { SERVER_PATHS } from "../utils"
 import auth from "./auth"
 import user from "./user"
 import uploader from "./uploader"

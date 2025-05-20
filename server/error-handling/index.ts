@@ -1,4 +1,4 @@
-import { COMMON_TEXTS } from "../../shared"
+import { COMMON_TEXTS } from "../utils"
 
 export const errorHandler = (app: any) => {
 	app.use((_: null, res: any) => {

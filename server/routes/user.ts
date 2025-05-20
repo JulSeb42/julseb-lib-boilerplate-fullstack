@@ -4,11 +4,8 @@ import jwt from "jsonwebtoken"
 import { passwordRegex } from "@julseb-lib/utils"
 import { UserModel } from "../models"
 import { SALT_ROUNDS, TOKEN_SECRET, jwtConfig } from "../utils"
-import { COMMON_TEXTS, SERVER_PATHS } from "../../shared"
-import type {
-	EditAccountFormData,
-	EditPasswordFormData,
-} from "../../shared/types"
+import { COMMON_TEXTS, SERVER_PATHS } from "../utils"
+import type { EditAccountFormData, EditPasswordFormData } from "../types"
 
 const router = Router()
 
