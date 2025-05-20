@@ -107,5 +107,5 @@
 		"skipLibCheck": true /* Skip type checking all .d.ts files. */
 	},
 	"include": ["server", "shared"],
-	"exclude": ["node_modules", "client"]
+	"exclude": ["node_modules", "clientOLD"]
 }

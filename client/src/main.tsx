@@ -1,20 +1,10 @@
-import ReactDOM from "react-dom/client"
-import { BrowserRouter } from "react-router-dom"
-import { App } from "App"
-import {
-	AuthProviderWrapper,
-	/* Prepend generated context import - DO NOT REMOVE */
-} from "context"
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import App from './App.tsx'
 
-import "@julseb-lib/react/index.css"
-import "styles/index.css"
-
-ReactDOM.createRoot(document.getElementById("root")!).render(
-	<BrowserRouter>
-		<AuthProviderWrapper>
-			{/* Prepend context open - DO NOT REMOVE */}
-			<App />
-			{/* Prepend context close - DO NOT REMOVE */}
-		</AuthProviderWrapper>
-	</BrowserRouter>,
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
 )
