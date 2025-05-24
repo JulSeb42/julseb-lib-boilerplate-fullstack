@@ -1,5 +1,7 @@
+{{#if forward}}
+import { Ref } from "react"
 
-
+{{/if}}
 export interface I{{>pascalName }} {
-   
+   {{#if forward}}ref?: Ref<HTML{{ pascalCase attribute }}Element>{{/if}}
 }

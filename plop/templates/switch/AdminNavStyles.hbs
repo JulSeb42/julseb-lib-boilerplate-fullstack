@@ -1,8 +1,9 @@
+import styled, { css } from "styled-components"
+import { Mixins, SPACERS, SHADOWS, FONT_WEIGHTS, TRANSITIONS, MEDIA, } from "@julseb-lib/react"
 
+export const ADMIN_NAV_WIDTH = 200
 
-import styled, { css } from "styled-components" import { Mixins, SPACERS,
-SHADOWS, FONT_WEIGHTS, TRANSITIONS, MEDIA, } from "@julseb-lib/react" export
-const ADMIN_NAV_WIDTH = 200 export const StyledAdminNav = styled.nav` width:
+export const StyledAdminNav = styled.nav` width:
 ${ADMIN_NAV_WIDTH}px; height: 100vh; position: fixed; top: 0; left: 0;
 background-color: ${({ theme }) => theme.GRAY_50}; padding: ${SPACERS.XXL} 0;
 box-shadow: ${SHADOWS.S}; ${Mixins.Flexbox({ $flexDirection: "column", $gap:
