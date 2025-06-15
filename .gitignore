@@ -15,3 +15,5 @@ yarn.lock
 
 dist
 clientOLD
+
+seed/*.json

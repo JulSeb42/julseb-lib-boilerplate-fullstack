@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Cloudinary } from "@cloudinary/url-gen/index"
 import { AdvancedImage, responsive, placeholder } from "@cloudinary/react"
 import classNames from "classnames"
@@ -23,26 +23,26 @@ export const ImageUploader = ({
 
 	const uploadWidgetRef = useRef(null)
 	const uploadButtonRef = useRef<HTMLButtonElement>(null)
+	const [currentImg, setCurrentImg] = useState(
+		(user?.avatar || pictureData?.public_id) ?? "",
+	)
 
-	const cld = new Cloudinary({
-		cloud: {
-			cloudName,
-		},
-	})
+	const cld = new Cloudinary({ cloud: { cloudName } })
 
 	useEffect(() => {
 		const initializeUploadWidget = () => {
-			// @ts-ignore
-			if (window.cloudinary && uploadButtonRef.current) {
+			if ((window as any).cloudinary && uploadButtonRef?.current) {
 				// Create upload widget
-				// @ts-ignore
-				uploadWidgetRef.current = window.cloudinary.createUploadWidget(
+				uploadWidgetRef.current = (
+					window as any
+				).cloudinary.createUploadWidget(
 					uwConfig,
-					// @ts-ignore
-					(error, result) => {
+					(error: any, result: any) => {
 						if (!error && result && result.event === "success") {
 							console.log("Upload successful:", result.info)
+							console.log({ result })
 							setPictureData(result.info)
+							setCurrentImg(result.info.secure_url)
 						}
 					},
 				)
@@ -50,18 +50,15 @@ export const ImageUploader = ({
 				// Add click event to open widget
 				const handleUploadClick = () => {
 					if (uploadWidgetRef.current) {
-						// @ts-ignore
-						uploadWidgetRef.current.open()
+						;(uploadWidgetRef as any).current.open()
 					}
 				}
 
 				const buttonElement = uploadButtonRef.current
-				// @ts-ignore
 				buttonElement.addEventListener("click", handleUploadClick)
 
 				// Cleanup
 				return () => {
-					// @ts-ignore
 					buttonElement.removeEventListener(
 						"click",
 						handleUploadClick,
@@ -71,7 +68,7 @@ export const ImageUploader = ({
 		}
 
 		initializeUploadWidget()
-	}, [uwConfig, setPictureData])
+	}, [pictureData, uwConfig, setPictureData, currentImg])
 
 	return (
 		<InputContainer
@@ -94,11 +91,11 @@ export const ImageUploader = ({
 					icon
 				)}
 
-				{user?.avatar && <Image src={user.avatar} />}
+				{currentImg && <Image src={currentImg} />}
 
 				{pictureData && (
 					<AdvancedImage
-						cldImg={cld.image(pictureData.public_id)}
+						cldImg={cld.image(currentImg)}
 						plugins={[responsive(), placeholder({ mode: "blur" })]}
 					/>
 				)}

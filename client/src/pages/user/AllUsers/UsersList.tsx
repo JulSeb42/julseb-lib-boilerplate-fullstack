@@ -1,22 +1,20 @@
+import { use } from "react"
 import styled from "styled-components"
 import {
-	useFetch,
 	Text,
 	Grid,
-	generateNumbers,
 	Pagination,
 	usePaginatedData,
 	SPACERS,
 } from "@julseb-lib/react"
 import { userService } from "api"
-import { UserCard, UserCardSkeleton } from "components"
-import type { AxiosResponse } from "axios"
+import { UserCard } from "components"
 import type { User } from "types"
 
+const res = userService.allUsers()
+
 export const UsersList = () => {
-	const { response, error, loading } = useFetch<AxiosResponse>(
-		userService.allUsers(),
-	)
+	const response = use(res)
 
 	const users: Array<User> | null = response?.data
 
@@ -24,10 +22,6 @@ export const UsersList = () => {
 		users ?? [],
 		15,
 	)
-
-	if (loading || (!response && !error)) return <UsersListSkeleton />
-
-	if (error) return <Text>Error while fetching users: {error.message}</Text>
 
 	if (!users?.length) return <Text>No user yet.</Text>
 
@@ -41,16 +35,6 @@ export const UsersList = () => {
 
 			<Pagination totalPages={totalPages} />
 		</>
-	)
-}
-
-const UsersListSkeleton = () => {
-	return (
-		<Grid col={3} gap="s">
-			{generateNumbers(0, 4).map(n => (
-				<UserCardSkeleton key={n} />
-			))}
-		</Grid>
 	)
 }
 
