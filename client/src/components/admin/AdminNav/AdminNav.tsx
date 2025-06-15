@@ -39,6 +39,7 @@ export const AdminNav = () => {
 						to={link.to ? link.to : undefined}
 						onClick={link.onClick ? link.onClick : undefined}
 						blank={link.blank}
+						isNavLink
 					>
 						<NavIcon icon={link.icon} />
 						{link.text}

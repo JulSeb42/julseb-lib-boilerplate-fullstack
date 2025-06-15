@@ -10,7 +10,7 @@ import {
 	getRandom,
 } from "@julseb-lib/utils"
 import { UserModel } from "../server/models/User.model"
-import type { User } from "../shared/types"
+import type { User } from "../server/types"
 
 // Hash password
 const password = "Password42"
@@ -21,16 +21,26 @@ const MONGODB_URI = "mongodb://localhost/boilerplate-react-rest"
 
 mongoose.connect(MONGODB_URI)
 
-const realUser: Partial<User> = {
-	fullName: "Julien Sebag",
-	email: "julien@email.com",
-	password: hash,
-	verified: true,
-	verifyToken: getRandomString(20),
-	role: "admin",
-}
+const realUsers: Partial<User>[] = [
+	{
+		fullName: "Julien Sebag",
+		email: "julien@admin.com",
+		password: hash,
+		verified: true,
+		verifyToken: getRandomString(20),
+		role: "admin",
+	},
+	{
+		fullName: "Julien Sebag",
+		email: "julien@user.com",
+		password: hash,
+		verified: true,
+		verifyToken: getRandomString(20),
+		role: "user",
+	},
+]
 
-const fakeUsers: Array<Partial<User>> = generateNumbers(0, 98).map(() => {
+const fakeUsers: Array<Partial<User>> = generateNumbers(0, 97).map(() => {
 	const genders = getRandom(["male", "female"])
 	const fullName = faker.person
 		.fullName(genders as any)
@@ -52,7 +62,7 @@ const fakeUsers: Array<Partial<User>> = generateNumbers(0, 98).map(() => {
 	}
 })
 
-UserModel.insertMany([realUser, ...fakeUsers])
+UserModel.insertMany([...realUsers, ...fakeUsers])
 	.then(users => {
 		console.log(
 			`Success, you added ${users.length} user${

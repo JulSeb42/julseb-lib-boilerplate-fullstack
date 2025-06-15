@@ -15,8 +15,12 @@ import {
 	Goodbye,
 } from "pages/auth"
 import { MyAccount, EditAccount, EditPassword } from "pages/account"
-import { Admin } from "pages/admin/Admin"
-import { Users } from "pages/admin/Users/AdminUsers"
+import {
+	Admin,
+	AdminUsers,
+	AdminMyAccount,
+	AdminEditPassword,
+} from "pages/admin"
 /* Prepend import new file - DO NOT REMOVE */
 
 type Route = {
@@ -53,8 +57,17 @@ export const routes: Array<Route> = [
 	{ path: PATHS.EDIT_PASSWORD, element: <EditPassword />, type: "protected" },
 
 	{ path: PATHS.ADMIN_HOME, element: <Admin />, type: "admin" },
-	{ path: PATHS.ADMIN_USERS, element: <Users />, type: "admin" },
-
+	{ path: PATHS.ADMIN_USERS, element: <AdminUsers />, type: "admin" },
+	{
+		path: PATHS.ADMIN_MY_ACCOUNT,
+		element: <AdminMyAccount />,
+		type: "admin",
+	},
+	{
+		path: PATHS.ADMIN_EDIT_PASSWORD,
+		element: <AdminEditPassword />,
+		type: "admin",
+	},
 	/* Prepend new route - DO NOT REMOVE */
 
 	...redirects,

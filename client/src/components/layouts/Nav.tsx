@@ -3,31 +3,27 @@ import { NavLink } from "react-router-dom"
 import { uuid, Skeleton } from "@julseb-lib/react"
 import { useAuthContext } from "context"
 import { navLinks } from "data"
-import type { INavLink } from "types"
+import type { INavLinkExtended } from "types"
 
 export const Nav = () => {
 	const { isLoggedIn, logoutUser, isLoading, user } = useAuthContext()
-	const [allLinks, setAllLinks] = useState<Array<INavLink>>(undefined as any)
+	const [allLinks, setAllLinks] = useState<Array<INavLinkExtended>>(
+		undefined as any,
+	)
 
 	useEffect(() => {
 		if (isLoggedIn) {
 			setAllLinks([
-				...navLinks.filter(link => {
-					if (user?.role === "admin")
-						return (
-							link.type === "protected" ||
-							link.type === "none" ||
-							link.role === "admin"
-						)
-					return (
-						(link.type === "protected" || link.type === "none") &&
-						link.role !== "admin"
-					)
-				}),
+				...navLinks.filter(link =>
+					user?.role === "admin"
+						? link.role === "admin" || link.type === "none"
+						: (link.role === "user" || link.type === "protected") &&
+							link.type !== "anon" &&
+							link.role !== "admin",
+				),
 				{
 					text: "Logout",
 					onClick: logoutUser,
-					// @ts-ignore
 					type: "protected",
 					role: "user",
 				},
@@ -35,10 +31,39 @@ export const Nav = () => {
 		} else {
 			setAllLinks(
 				navLinks.filter(
-					link => link.type === "anon" || link.type === "none",
+					link => link.type === "none" || link.type === "anon",
 				),
 			)
 		}
+		// if (isLoggedIn) {
+		// 	setAllLinks([
+		// 		...navLinks.filter(link => {
+		// 			if (user?.role === "admin")
+		// 				return (
+		// 					link.type === "protected" ||
+		// 					link.type === "none" ||
+		// 					link.role === "admin"
+		// 				)
+		// 			return (
+		// 				(link.type === "protected" || link.type === "none") &&
+		// 				link.role !== "admin"
+		// 			)
+		// 		}),
+		// {
+		// 	text: "Logout",
+		// 	onClick: logoutUser,
+		// 	// @ts-ignore
+		// 	type: "protected",
+		// 	role: "user",
+		// },
+		// 	])
+		// } else {
+		// 	setAllLinks(
+		// 		navLinks.filter(
+		// 			link => link.type === "anon" || link.type === "none",
+		// 		),
+		// 	)
+		// }
 	}, [isLoggedIn])
 
 	const skeletonProps = {

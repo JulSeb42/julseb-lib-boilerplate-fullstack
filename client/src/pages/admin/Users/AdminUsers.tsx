@@ -7,7 +7,7 @@ import { AdminUsersList } from "./AdminUsersList"
 import type { AxiosResponse } from "axios"
 import type { IErrorMessage, User } from "types"
 
-export const Users = () => {
+export const AdminUsers = () => {
 	const [response, setResponse] = useState<AxiosResponse | undefined>(
 		undefined,
 	)

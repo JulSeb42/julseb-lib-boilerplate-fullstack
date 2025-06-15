@@ -1,5 +1,6 @@
 import type { NodePlopAPI } from "plop"
-import welcome from "cli-welcome"
+import figlet from "figlet"
+import chalk from "chalk"
 import { runCommand } from "./actions/index.js"
 import {
 	generateComponent,
@@ -22,18 +23,12 @@ import { pascalName, kebabName } from "./partials/index.js"
 export default (plop: NodePlopAPI) => {
 	const { load } = plop
 
-	welcome({
-		title: "Julseb CLI",
-		tagLine: "A tool to generate React code in TS apps",
-		description: "",
-		bgColor: "#ffffff",
-		color: "#000000",
-		bold: true,
-		clear: true,
-		version: "1.0.0",
-	})
-
-	load("plop-pack-remove") // With this helper you can remove files in your project. Full doc here https://github.com/TheSharpieOne/plop-pack-remove
+	console.log(
+		chalk.blueBright(
+			figlet.textSync("JulSeb CLI", { horizontalLayout: "full" })
+		)
+	),
+		load("plop-pack-remove") // With this helper you can remove files in your project. Full doc here https://github.com/TheSharpieOne/plop-pack-remove
 	runCommand(plop) // With this helper you can run commands in a terminal => { type: "runCommand", command: "console.log("hello world")" }
 
 	pascalName(plop) // Shortcut for {{ pascalCase name }}, use: {{>pascalName }}

@@ -6,6 +6,8 @@ import {
 	RADIUSES,
 	TRANSITIONS,
 	Icon,
+	ButtonIcon,
+	SPACERS,
 } from "@julseb-lib/react"
 
 const INPUT_SIZE = 120
@@ -13,6 +15,9 @@ const INPUT_SIZE = 120
 export const ImageContainer = styled.div`
 	width: ${INPUT_SIZE}px;
 	height: ${INPUT_SIZE}px;
+	position: relative;
+	border-radius: ${RADIUSES.M};
+	overflow: hidden;
 `
 
 export const HoverContainer = styled.div`
@@ -38,7 +43,7 @@ export const StyledImageUploader = styled.button`
 	padding: 0;
 	border: none;
 	border-radius: ${RADIUSES.M};
-	overflow: hidden;
+	overflow: visible;
 	${Mixins.Flexbox({
 		$alignItems: "center",
 		$justifyContent: "center",
@@ -60,4 +65,14 @@ export const StyledIcon = styled(Icon)`
 		opacity: 1;
 		visibility: visible;
 	}
+`
+
+export const StyledButton = styled(ButtonIcon).attrs({
+	size: 24,
+	color: "danger",
+})`
+	position: absolute;
+	left: calc(120px - 24px);
+	top: calc(24px + ${SPACERS.XXS});
+	transform: translateX(${SPACERS.XXS}) translateY(calc(${SPACERS.XXS} * -1));
 `

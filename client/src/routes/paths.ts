@@ -15,6 +15,8 @@ export const PATHS = {
 
 	ADMIN_HOME: "/admin",
 	ADMIN_USERS: "/admin/users",
+	ADMIN_MY_ACCOUNT: "/admin/my-account",
+	ADMIN_EDIT_PASSWORD: "/admin/my-account/edit-password",
 
 	MY_ACCOUNT: "/my-account",
 	EDIT_ACCOUNT: "/my-account/edit",

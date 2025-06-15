@@ -1,11 +1,16 @@
+import { Link, Navigate } from "react-router-dom"
 import { Text } from "@julseb-lib/react"
-import { Link } from "react-router-dom"
 import { Page } from "components"
 import { PATHS } from "routes"
-import { EditAccountForm } from "./EditAccountForm"
+import { useAuthContext } from "context"
+import { EditAccountForm } from "forms"
 import { DeleteAccount } from "./DeleteAccount"
 
 export const EditAccount = () => {
+	const { user } = useAuthContext()
+
+	if (user?.role === "admin") return <Navigate to={PATHS.ADMIN_MY_ACCOUNT} />
+
 	return (
 		<Page title="Edit your account" mainSize="form">
 			<Text tag="h1">Edit your account</Text>

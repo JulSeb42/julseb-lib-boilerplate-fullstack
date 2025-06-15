@@ -14,7 +14,9 @@ export const UserAvatar: FC<IAvatar> = ({ size, user, isLoading }) => {
 				src: user.avatar,
 				alt: `Avatar ${user.fullName}`,
 				fallback: getInitials(user.fullName),
+				fallbackBackgroundColor: "primary",
 			}}
+			// backgroundColor="primary"
 		/>
 	)
 }

@@ -14,6 +14,7 @@ export const navLinks: Array<INavLinkExtended> = [
 		type: "protected",
 		role: "user",
 	},
+
 	{ text: "Admin", to: PATHS.ADMIN_HOME, type: "protected", role: "admin" },
 ]
 
@@ -23,5 +24,6 @@ export const adminNavLinks: Array<INavLinkAdmin> = [
 ]
 
 export const adminBottomLinks: Array<INavLinkAdmin> = [
+	{ text: "My account", to: PATHS.ADMIN_MY_ACCOUNT, icon: "user-circle" },
 	{ text: "Back to app", to: PATHS.ROOT, icon: "link-external", blank: true },
 ]

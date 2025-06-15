@@ -2,9 +2,18 @@ import { useEffect, useRef, useState } from "react"
 import { Cloudinary } from "@cloudinary/url-gen/index"
 import { AdvancedImage, responsive, placeholder } from "@cloudinary/react"
 import classNames from "classnames"
-import { Icon, InputContainer, Image } from "@julseb-lib/react"
+import {
+	Icon,
+	InputContainer,
+	Image,
+	Modal,
+	Alert,
+	Text,
+	Flexbox,
+	Button,
+} from "@julseb-lib/react"
 import { useAuthContext } from "context"
-import { StyledImageUploader, HoverContainer } from "./styles"
+import { StyledImageUploader, HoverContainer, StyledButton } from "./styles"
 import type { IImageUploader } from "./types"
 
 const cloudName = import.meta.env.VITE_CLOUDINARY_NAME
@@ -28,6 +37,8 @@ export const ImageUploader = ({
 	)
 
 	const cld = new Cloudinary({ cloud: { cloudName } })
+
+	const [isOpen, setIsOpen] = useState(false)
 
 	useEffect(() => {
 		const initializeUploadWidget = () => {
@@ -71,39 +82,84 @@ export const ImageUploader = ({
 	}, [pictureData, uwConfig, setPictureData, currentImg])
 
 	return (
-		<InputContainer
-			label={label}
-			labelComment={labelComment}
-			helper={helper}
-			helperBottom={helperBottom}
-		>
-			<StyledImageUploader ref={uploadButtonRef} type="button">
-				{typeof icon === "string" ? (
-					<Icon
-						src={icon}
-						size={64}
-						color="primary"
-						className={classNames({
-							Visible: user ? user?.avatar !== undefined : false,
-						})}
+		<>
+			<InputContainer
+				label={label}
+				labelComment={labelComment}
+				helper={helper}
+				helperBottom={helperBottom}
+			>
+				<StyledImageUploader ref={uploadButtonRef} type="button">
+					{typeof icon === "string" ? (
+						<Icon
+							src={icon}
+							size={64}
+							color="primary"
+							className={classNames({
+								Visible: user
+									? user?.avatar !== undefined
+									: false,
+							})}
+						/>
+					) : (
+						icon
+					)}
+
+					{currentImg && <Image src={currentImg} borderRadius="m" />}
+
+					{pictureData && (
+						<AdvancedImage
+							cldImg={cld.image(currentImg)}
+							plugins={[
+								responsive(),
+								placeholder({ mode: "blur" }),
+							]}
+						/>
+					)}
+
+					<HoverContainer>
+						<Icon src="edit" color="primary" size={48} />
+					</HoverContainer>
+				</StyledImageUploader>
+
+				{currentImg && (
+					// @ts-ignore
+					<StyledButton
+						icon="close"
+						type="button"
+						onClick={() => setIsOpen(true)}
 					/>
-				) : (
-					icon
 				)}
+			</InputContainer>
 
-				{currentImg && <Image src={currentImg} />}
+			<Modal isOpen={isOpen} setIsOpen={setIsOpen} hideCloseButton>
+				<Alert alertColor="danger" maxWidth={600}>
+					<Text>
+						Are you sure you want to delete your profile picture?
+					</Text>
 
-				{pictureData && (
-					<AdvancedImage
-						cldImg={cld.image(currentImg)}
-						plugins={[responsive(), placeholder({ mode: "blur" })]}
-					/>
-				)}
+					<Flexbox gap="xs">
+						<Button
+							color="danger"
+							onClick={() => {
+								setCurrentImg("")
+								setPictureData(undefined as any)
+								setIsOpen(false)
+							}}
+							type="button"
+						>
+							Yes, delete picture
+						</Button>
 
-				<HoverContainer>
-					<Icon src="edit" color="primary" size={48} />
-				</HoverContainer>
-			</StyledImageUploader>
-		</InputContainer>
+						<Button
+							variant="transparent"
+							onClick={() => setIsOpen(false)}
+						>
+							No, cancel
+						</Button>
+					</Flexbox>
+				</Alert>
+			</Modal>
+		</>
 	)
 }
